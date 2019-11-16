@@ -1,0 +1,15 @@
+{"_id":{"$oid":"5dcd795522396c1bf4b937f7"},"name":"Assassin's Creed: Origins","category":"Hành động","imgSrc":"./img/ac.png","price":"$980.00"}
+{"_id":{"$oid":"5dce529d14ac7129f002b558"},"name":"Battlefield 1","category":"Hành động","imgSrc":"./img/bf.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce52c514ac7129f002b559"},"name":"Call of Duty: WWII","category":"Hành động","imgSrc":"./img/cod.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce532214ac7129f002b55a"},"name":"CS: GO","category":"Chiến thuật","imgSrc":"./img/csgo.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce536114ac7129f002b55b"},"name":"Don't Starve Together","category":"Phiêu lưu","imgSrc":"./img/dontstarve.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce538f14ac7129f002b55c"},"name":"Farcry 5","category":"Hành động","imgSrc":"./img/farcry.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce53c014ac7129f002b55d"},"name":"Grand Theft Auto V","category":"Phiêu lưu","imgSrc":"./img/gta.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce53d614ac7129f002b55e"},"name":"Mass Effect 3","category":"Phiêu lưu","imgSrc":"./img/me.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce53f914ac7129f002b55f"},"name":"Outlast","category":"Kinh dị","imgSrc":"./img/outlast.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce541814ac7129f002b560"},"name":"Overwatch","category":"Chiến thuật","imgSrc":"./img/overwatch.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce544014ac7129f002b561"},"name":"PUBG","category":"Chiến thuật","imgSrc":"./img/pubg.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce546714ac7129f002b562"},"name":"Resident Evil 7: Bioharzard","category":"Kinh dị","imgSrc":"./img/re.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce548c14ac7129f002b563"},"name":"The Elder Scroll V: Skyrim","category":"Phiêu lưu","imgSrc":"./img/skyrim.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dce54e514ac7129f002b564"},"name":"Tomb Raider","category":"Phiêu lưu","imgSrc":"./img/tombraider.jpeg","price":"$980.00"}
+{"_id":{"$oid":"5dce551914ac7129f002b565"},"name":"The Witcher 3: Wild Hunt","category":"Phiêu lưu","imgSrc":"./img/tw.jpg","price":"$980.00"}
