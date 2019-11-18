@@ -27,8 +27,8 @@ router.get('/store', function(req, res, next) {
 });
 
 // Sample Product (AC)
-router.get('/sample-product', function(req, res, next) {
-  Product.findOne({ name: "Assassin's Creed: Origins" })
+router.get('/sample-product/:name', function(req, res, next) {
+  Product.findOne({ name: req.params.name })
         .then(product => {
             res.render('sample-product', { product: product })
         })

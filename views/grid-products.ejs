@@ -2,7 +2,7 @@
     <% products.forEach((entry) => { %>
     <div class="col-md-4 col-xs-6">
         <div class="product">
-            <a href="/sample-product">
+            <a href="/sample-product/<%= entry.name %>">
                 <div class="product-img">
                     <img src="<%= entry.imgSrc %>" alt="">
                     <div class="product-label">
@@ -13,7 +13,7 @@
             </a>
             <div class="product-body">
                 <p class="product-category"><%= entry.category %></p>
-                <h3 class="product-name"><a href="/sample-product"><%= entry.name %></a></h3>
+                <h3 class="product-name"><a href="/sample-product/<%= entry.name %>"><%= entry.name %></a></h3>
                 <h4 class="product-price"><%= entry.price %> <del class="product-old-price"><%= entry.price %></del>
                 </h4>
                 <div class="product-rating">
