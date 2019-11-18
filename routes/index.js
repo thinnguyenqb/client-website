@@ -6,7 +6,7 @@ var Product = require('./../db/model/product');
 router.get('/', function(req, res, next) {
   Product.find({})
         .then(products => {
-            res.render('index', { products: products })
+            res.render('pages/index', { products: products })
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 router.get('/store', function(req, res, next) {
   Product.find({})
         .then(products => {
-            res.render('store', { products: products })
+            res.render('pages/store', { products: products })
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -26,11 +26,11 @@ router.get('/store', function(req, res, next) {
         })
 });
 
-// Sample Product (AC)
-router.get('/sample-product/:name', function(req, res, next) {
-  Product.findOne({ name: req.params.name })
+// Product Information
+router.get('/product/:id', function(req, res, next) {
+  Product.findOne({ _id: req.params.id })
         .then(product => {
-            res.render('sample-product', { product: product })
+            res.render('pages/product', { product: product })
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -39,43 +39,10 @@ router.get('/sample-product/:name', function(req, res, next) {
 });
 
 // Categories
-router.get('/action', function(req, res, next) {
-  Product.find({ category: "Hành động" })
+router.get('/category/:category', function(req, res, next) {
+  Product.find({ category: req.params.category })
         .then(products => {
-            res.render('store', { products: products })
-        })
-        .catch(err => {
-            console.log('Error: ', err);
-            throw err;
-        })
-});
-
-router.get('/horror', function(req, res, next) {
-  Product.find({ category: "Kinh dị" })
-        .then(products => {
-            res.render('store', { products: products })
-        })
-        .catch(err => {
-            console.log('Error: ', err);
-            throw err;
-        })
-});
-
-router.get('/rpg', function(req, res, next) {
-  Product.find({ category: "Phiêu lưu" })
-        .then(products => {
-            res.render('store', { products: products })
-        })
-        .catch(err => {
-            console.log('Error: ', err);
-            throw err;
-        })
-});
-
-router.get('/strategy', function(req, res, next) {
-  Product.find({ category: "Chiến thuật" })
-        .then(products => {
-            res.render('store', { products: products })
+            res.render('pages/store', { products: products })
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -85,23 +52,23 @@ router.get('/strategy', function(req, res, next) {
 
 // Account
 router.get('/login', function(req, res, next) {
-  res.render('account/login', { title: 'Express' });
+  res.render('pages/account/login', { title: 'Express' });
 });
 
 router.get('/register', function(req, res, next) {
-  res.render('account/register', { title: 'Express' });
+  res.render('pages/account/register', { title: 'Express' });
 });
 
 router.get('/forget-password', function(req, res, next) {
-  res.render('account/forget-password', { title: 'Express' });
+  res.render('pages/account/forget-password', { title: 'Express' });
 });
 
 router.get('/profile', function(req, res, next) {
-  res.render('account/profile', { title: 'Express' });
+  res.render('pages/account/profile', { title: 'Express' });
 });
 
 router.get('/checkout', function(req, res, next) {
-  res.render('checkout', { title: 'Express' });
+  res.render('pages/checkout', { title: 'Express' });
 });
 
 module.exports = router;

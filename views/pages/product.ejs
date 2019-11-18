@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
-                    <li><a href="#">Trang chủ</a></li>
-                    <li><a href="#"><%= product.category %></a></li>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/category/<%= product.category %>"><%= product.category %></a></li>
                     <li class="active"><%= product.name %></li>
                 </ul>
             </div>
@@ -106,7 +106,12 @@
 
                     <ul class="product-links">
                         <li>Danh mục:</li>
-                        <li><a href="#"><%= product.category %></a></li>
+                        <li><a href="/category/<%= product.category %>"><%= product.category %></a></li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Nhà sản xuất:</li>
+                        <li><a href="/category/<%= product.category %>"><%= product.category %></a></li>
                     </ul>
 
                     <ul class="product-links">
