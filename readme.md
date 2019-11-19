@@ -9,6 +9,4 @@ Cách làm việc nhóm:
  - Quản lý code trên github
  - Có gì chưa hiểu hay thắc mắc gì thì hỏi trong group chat để các thành viên còn lại giúp đỡ
  - Một số lỗi nhỏ có thể khi code ko để ý nên mong mn review code để sửa kịp thời nha
-   # Lưu ý: 
- - Check mes để nắm thông tin, nhớ là phải trả lời mes để leader biết bạn làm đến đâu rồi
- - Không đc im im đến cuối deadline mới báo là ko làm được, lúc đó leader ko biết xoay sở thế nào
+  
