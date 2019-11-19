@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 router.get('/store', function(req, res, next) {
   Product.find({})
         .then(products => {
-            res.render('pages/store', { products: products })
+            res.render('pages/store', { products: products, name: 'Tất cả'})
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -42,13 +42,26 @@ router.get('/product/:id', function(req, res, next) {
 router.get('/category/:category', function(req, res, next) {
   Product.find({ category: req.params.category })
         .then(products => {
-            res.render('pages/store', { products: products })
+            res.render('pages/store', { products: products, name: req.params.category})
         })
         .catch(err => {
             console.log('Error: ', err);
             throw err;
         })
 });
+
+// Producer
+router.get('/producer/:producer', function(req, res, next) {
+  Product.find({ producer: req.params.producer })
+        .then(products => {
+            res.render('pages/store', { products: products, name: req.params.producer})
+        })
+        .catch(err => {
+            console.log('Error: ', err);
+            throw err;
+        })
+});
+
 
 // Account
 router.get('/login', function(req, res, next) {

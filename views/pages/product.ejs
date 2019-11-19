@@ -30,6 +30,15 @@
                     <div class="product-preview">
                         <img src="<%= product.imgSrc %>" alt="">
                     </div>
+                    <div class="product-preview">
+                        <img src="<%= product.imgSrc %>" alt="">
+                    </div>
+                    <div class="product-preview">
+                        <img src="<%= product.imgSrc %>" alt="">
+                    </div>
+                    <div class="product-preview">
+                        <img src="<%= product.imgSrc %>" alt="">
+                    </div>
                 </div>
             </div>
             <!-- /Product main img -->
@@ -37,6 +46,15 @@
             <!-- Product thumb imgs -->
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
+                    <div class="product-preview">
+                        <img src="<%= product.imgSrc %>" alt="">
+                    </div>
+                    <div class="product-preview">
+                        <img src="<%= product.imgSrc %>" alt="">
+                    </div>
+                    <div class="product-preview">
+                        <img src="<%= product.imgSrc %>" alt="">
+                    </div>
                     <div class="product-preview">
                         <img src="<%= product.imgSrc %>" alt="">
                     </div>
@@ -88,7 +106,7 @@
 
                     <ul class="product-links">
                         <li>Nhà sản xuất:</li>
-                        <li><a href="/category/<%= product.producer %>"><%= product.producer %></a></li>
+                        <li><a href="/producer/<%= product.producer %>"><%= product.producer %></a></li>
                     </ul>
 
                     <ul class="product-links">
@@ -121,9 +139,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <a style="color: black;"><%= product.description %></a>
-                                    <h3>Trailer</h3>
+                                    <!-- <h3>Trailer</h3>
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/cVEemOmHw9Y" frameborder="0" 
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                                 </div>
                             </div>
                         </div>
@@ -134,7 +152,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <li>Chính hãng, Nguyên seal, Mới 100%, Chưa active</li>
+                                        <!-- <li>Chính hãng, Nguyên seal, Mới 100%, Chưa active</li>
                                         <li>Mã part: VN/A</li>
                                         <li>Thiết kế: Nguyên khối</li>
                                         <li>Màn hình: OLED (Super Retina XDR), 6.5 inch, 2688 x 1242 pixels</li>
@@ -143,7 +161,8 @@
                                         <li>Bộ Nhớ: 256 GB</li>
                                         <li>RAM: 4GB</li>
                                         <li>SIM: 1 Nano SIM + 1 esim</li>
-                                        <li>Tính năng: Chống nước, chống bụi, Face ID, Sạc pin nhanh</li>
+                                        <li>Tính năng: Chống nước, chống bụi, Face ID, Sạc pin nhanh</li> -->
+                                        <%= product.configuration %>
                                     </p>
                                 </div>
                             </div>
