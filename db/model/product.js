@@ -6,6 +6,7 @@ var productSchema = mongoose.Schema({
     manufacturer: { type: String },
     imgSrc: { type: String },
     price: { type: String },
+    old_price: { type: String },
     configuration: { type: String },
     description: { type: String }
 });

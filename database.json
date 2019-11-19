@@ -1,15 +1,11 @@
-{"_id":{"$oid":"5dcd795522396c1bf4b937f7"},"name":"Assassin's Creed: Origins","category":"Hành động","imgSrc":"./img/ac.png","price":"$980.00"}
-{"_id":{"$oid":"5dce529d14ac7129f002b558"},"name":"Battlefield 1","category":"Hành động","imgSrc":"./img/bf.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce52c514ac7129f002b559"},"name":"Call of Duty: WWII","category":"Hành động","imgSrc":"./img/cod.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce532214ac7129f002b55a"},"name":"CS: GO","category":"Chiến thuật","imgSrc":"./img/csgo.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce536114ac7129f002b55b"},"name":"Don't Starve Together","category":"Phiêu lưu","imgSrc":"./img/dontstarve.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce538f14ac7129f002b55c"},"name":"Farcry 5","category":"Hành động","imgSrc":"./img/farcry.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce53c014ac7129f002b55d"},"name":"Grand Theft Auto V","category":"Phiêu lưu","imgSrc":"./img/gta.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce53d614ac7129f002b55e"},"name":"Mass Effect 3","category":"Phiêu lưu","imgSrc":"./img/me.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce53f914ac7129f002b55f"},"name":"Outlast","category":"Kinh dị","imgSrc":"./img/outlast.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce541814ac7129f002b560"},"name":"Overwatch","category":"Chiến thuật","imgSrc":"./img/overwatch.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce544014ac7129f002b561"},"name":"PUBG","category":"Chiến thuật","imgSrc":"./img/pubg.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce546714ac7129f002b562"},"name":"Resident Evil 7: Bioharzard","category":"Kinh dị","imgSrc":"./img/re.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce548c14ac7129f002b563"},"name":"The Elder Scroll V: Skyrim","category":"Phiêu lưu","imgSrc":"./img/skyrim.jpg","price":"$980.00"}
-{"_id":{"$oid":"5dce54e514ac7129f002b564"},"name":"Tomb Raider","category":"Phiêu lưu","imgSrc":"./img/tombraider.jpeg","price":"$980.00"}
-{"_id":{"$oid":"5dce551914ac7129f002b565"},"name":"The Witcher 3: Wild Hunt","category":"Phiêu lưu","imgSrc":"./img/tw.jpg","price":"$980.00"}
+{"_id":{"$oid":"5dcd795522396c1bf4b937f7"},"name":"iPhone 11 64GB 2019 - Hàng Chính Hãng","category":"Điện thoại","imgSrc":"./img/iphone11-1.jpg","price":" 21.450.000 ₫","old_price":"22.900.000 ₫"}
+{"_id":{"$oid":"5dce529d14ac7129f002b558"},"name":"Samsung Galaxy Note 9 (128GB/6GB)","category":"Điện thoại","imgSrc":"./img/note10.jpg","price":"20.990.000 ₫","old_price":"22.990.000 ₫"}
+{"_id":{"$oid":"5dce52c514ac7129f002b559"},"name":"Samsung Galaxy A50 (64GB/4GB)","category":"Điện thoại","imgSrc":"./img/A50.jpg","price":"6.550.000 ₫","old_price":" 6.990.000 ₫"}
+{"_id":{"$oid":"5dd2f1b6fc1959435ca60fb9"},"name":"Apple Macbook Pro 2019 - 13 inchs ","category":"Laptop","imgSrc":"./img/macbook-pro2019.jpg","price":"43.769.000 ₫","old_price":"49.990.000 ₫"}
+{"_id":{"$oid":"5dd2f25cfc1959435ca60fba"},"name":"iPad Pro 11 inch (2018) 256GB Wifi Cellular","category":"Máy tính bảng","imgSrc":"./img/ipad-pro11.jpg","price":"22.485.000 ₫","old_price":"32.990.000 ₫"}
+{"_id":{"$oid":"5dd2f261fc1959435ca60fbb"},"name":"Samsung Galaxy Tab A 8 Plus P205N 2019","category":"Máy tính bảng","imgSrc":"./img/samsung-mtb.jpg","price":" 6.280.000 ₫","old_price":" 6.990.000 ₫"}
+{"_id":{"$oid":"5dd2f267fc1959435ca60fbc"},"name":"Microsoft Surface Pro 2017 Core i5-7300U","category":"Máy tính bảng","imgSrc":"./img/surface.jpg","price":"17.000.000 ₫","old_price":"  27.990.000 ₫"}
+{"_id":{"$oid":"5dd33ecf27dd452e8c5e33e9"},"name":"iPhone 11 Pro Max 64GB - Hàng Chính Hãng","category":"Điện thoại","imgSrc":"./img/iphone11-2.jpg","price":" 31.490.000 ₫","old_price":"33.990.000 ₫"}
+{"_id":{"$oid":"5dd3401d27dd452e8c5e33ea"},"name":"Apple AirPods 2 True Wireless ","category":"Phụ kiện","imgSrc":"./img/airpods.jpg","price":" 3.570.000 ₫","old_price":"6.900.000 ₫"}
+{"_id":{"$oid":"5dd340d527dd452e8c5e33eb"},"name":"Loa thông minh tích hợp Google Home Mini","category":"Phụ kiện","imgSrc":"./img/gg-home.jpg","price":" 580.000 ₫","old_price":"1.500.000 ₫"}
+{"_id":{"$oid":"5dd3413b27dd452e8c5e33ec"},"name":"Lenovo ThinkPad T480 i5-8250U (14 inch)","category":"Laptop","imgSrc":"./img/thinkpad.jpg","price":"26.609.000 ₫","old_price":"28.990.000 ₫"}

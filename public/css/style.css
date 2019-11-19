@@ -411,11 +411,14 @@ textarea.input {
 \*----------------------------*/
 
 #top-header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #1E1F29;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #6a6f6f;
 }
 
+.header-links{
+
+}
 .header-links li {
   display: inline-block;
   margin-right: 15px;
@@ -446,7 +449,7 @@ textarea.input {
 #header {
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: #15161D;
+  background-color:#324041;
 }
 
 .header-logo {
@@ -786,10 +789,10 @@ textarea.input {
 ===========================================================*/
 
 #hot-deal.section {
-  padding: 60px 0px;
-  margin: 30px 0px;
+  padding: 120px 0px;
+  margin: 60px 0px;
   background-color: #E4E7ED;
-  background-image: url('../img/hotdeal.png');
+  background-image: url('../img/banner2.jpg');
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -1528,6 +1531,7 @@ textarea.input {
 
 .product-details .add-to-cart {
   margin-bottom: 30px;
+  
 }
 
 .product-details .add-to-cart .add-to-cart-btn {
@@ -2002,14 +2006,9 @@ textarea.input {
 ===========================================================*/
 
 #footer {
-  background: #15161D;
+  background: #324041;
   color: #B9BABC;
 }
-
-#bottom-footer {
-  background: #1E1F29;
-}
-
 .footer {
   margin: 30px 0px;
 }
@@ -2188,3 +2187,29 @@ textarea.input {
     margin-top: 10px;
   }
 }
+
+.account-icon{
+  color: white;
+  size: 30%;
+}
+.dropdown-menu{
+  width: 150px;
+  margin: 10px;
+}
+.dropdown-item{
+  margin: 5px;
+  padding: 2px;
+  color: black;
+
+}
+.button-style{
+  margin-top: 8px; 
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.button-style a{
+  font-weight: bold;
+}
+
+
