@@ -30,18 +30,6 @@
                     <div class="product-preview">
                         <img src="<%= product.imgSrc %>" alt="">
                     </div>
-
-                    <div class="product-preview">
-                        <img src="./img/ac1.jpg" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="./img/ac2.jpg" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="./img/ac3.jpg" alt="">
-                    </div>
                 </div>
             </div>
             <!-- /Product main img -->
@@ -50,19 +38,7 @@
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
                     <div class="product-preview">
-                        <img src="./img/ac.png" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="./img/ac1.jpg" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="./img/ac2.jpg" alt="">
-                    </div>
-
-                    <div class="product-preview">
-                        <img src="./img/ac3.jpg" alt="">
+                        <img src="<%= product.imgSrc %>" alt="">
                     </div>
                 </div>
             </div>
@@ -80,10 +56,11 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-o"></i>
                         </div>
-                        <a class="review-link" href="#">10 đánh giá | Thêm đánh giá</a>
+                        <a class="review-link" href="#tab3">10 đánh giá | Thêm đánh giá</a>
                     </div>
                     <div>
-                        <h3 class="product-price"><%= product.price %> <del class="product-old-price"><%= product.price %></del></h3>
+                        <h3 class="product-price"><%= product.price %> <del
+                                class="product-old-price"><%= product.old_price %></del></h3>
                         <span class="product-available">Còn hàng</span>
                     </div>
 
@@ -99,10 +76,10 @@
                         <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
                     </div>
 
-                    <ul class="product-btns">
-                        <li><a href="#"><i class="fa fa-heart-o"></i> thêm vào danh sách mong muốn</a></li>
+                    <!-- <ul class="product-btns">
+                        <li><a href="#"><i class="fa fa-heart-o"></i> thêm vào danh sách </a></li>
                         <li><a href="#"><i class="fa fa-exchange"></i> thêm vào so sánh</a></li>
-                    </ul>
+                    </ul> -->
 
                     <ul class="product-links">
                         <li>Danh mục:</li>
@@ -111,15 +88,15 @@
 
                     <ul class="product-links">
                         <li>Nhà sản xuất:</li>
-                        <li><a href="/category/<%= product.category %>"><%= product.category %></a></li>
+                        <li><a href="/category/<%= product.producer %>"><%= product.producer %></a></li>
                     </ul>
 
                     <ul class="product-links">
                         <li>Chia sẻ:</li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2x"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
+                        <li><a href="#"><i class="fa fa-envelope fa-2x"></i></a></li>
                     </ul>
 
                 </div>
@@ -131,9 +108,9 @@
                 <div id="product-tab">
                     <!-- product tab nav -->
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Cấu hình</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Nhận xét (3)</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab1">Mô tả sản phẩm</a></li>
+                        <li><a data-toggle="tab" href="#tab2">Thông tin sản phẩm</a></li>
+                        <li><a data-toggle="tab" href="#tab3">Nhận xét</a></li>
                     </ul>
                     <!-- /product tab nav -->
 
@@ -143,21 +120,10 @@
                         <div id="tab1" class="tab-pane fade in active">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>
-                                        Chủ đề tâm điểm của Assassin’s Creed: Origins sẽ là nền văn minh Ai Cập cổ đại
-                                        và cốt truyện của game sẽ nói về hội sát thủ đầu tiên được thành lập trên thế
-                                        giới. Vào vai nhân vật chính có tên Bayek, người chơi sẽ tham gia vào một cuộc
-                                        hành trình đầy thử thách để chống lại Templar: The Order of the Ancients.<br>
-                                        Khác với những nhân vật chính trước đây như Connor, Altair, Edward hay Ezio,
-                                        Bayek có xu hướng hành động như một chiến binh chứ không phải một sát thủ. Ngoài
-                                        ra, anh ta cũng sở hữu một sức mạnh thể chất tuyệt vời, cùng với đó là một chú
-                                        đại bang thông minh để giúp sức trong việc khát sát và thăm dò địa hình.
-                                    </p>
+                                    <a style="color: black;"><%= product.description %></a>
                                     <h3>Trailer</h3>
-                                    <iframe width="1120" height="630" src="https://www.youtube.com/embed/kGq7ZCth7QY"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cVEemOmHw9Y" frameborder="0" 
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -168,14 +134,16 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <h3>Cấu hình tối thiểu</h3><br>
-                                        Hệ điều hành: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit)<br>
-                                        CPU: Intel Core i5-2400s @ 2.5 GHz hoặc AMD FX-6350 @ 3.9 GHz hoặc tương đương<br>
-                                        RAM: 6 GB<br>
-                                        Đồ họa: NVIDIA GeForce GTX 660 hoặc AMD R9 270 (2048 MB VRAM với Shader Model
-                                        5.0 hoặc tốt hơn)<br>
-                                        DirectX: Phiên bản 11<br>
-                                        Ổ cứng: 42 GB dung lượng trống
+                                        <li>Chính hãng, Nguyên seal, Mới 100%, Chưa active</li>
+                                        <li>Mã part: VN/A</li>
+                                        <li>Thiết kế: Nguyên khối</li>
+                                        <li>Màn hình: OLED (Super Retina XDR), 6.5 inch, 2688 x 1242 pixels</li>
+                                        <li>Camera Trước/Sau: 12MP / 12MP + 12MP + 12MP</li>
+                                        <li>CPU: Apple A13 Bionic (7 nm+)</li>
+                                        <li>Bộ Nhớ: 256 GB</li>
+                                        <li>RAM: 4GB</li>
+                                        <li>SIM: 1 Nano SIM + 1 esim</li>
+                                        <li>Tính năng: Chống nước, chống bụi, Face ID, Sạc pin nhanh</li>
                                     </p>
                                 </div>
                             </div>
@@ -390,176 +358,7 @@
                     <h3 class="title">Sản phẩm liên quan</h3>
                 </div>
             </div>
-
-            <!-- product -->
-            <div class="col-md-3 col-xs-6">
-                <div class="product">
-                    <div class="product-img">
-                        <img src="./img/ac.png" alt="">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                            <span class="new">MỚI</span>
-                        </div>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Phiêu lưu</p>
-                        <h3 class="product-name"><a href="#">Assassin's Creed: Origins</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del>
-                        </h4>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">thêm vào
-                                    danh sách mong
-                                    muốn</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">thêm vào
-                                    so
-                                    sánh</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">xem
-                                    nhanh</span></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào
-                            giỏ</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /product -->
-
-            <!-- product -->
-            <div class="col-md-3 col-xs-6">
-                <div class="product">
-                    <div class="product-img">
-                        <img src="./img/bf.jpg" alt="">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                            <span class="new">MỚI</span>
-                        </div>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Hành động</p>
-                        <h3 class="product-name"><a href="#">Battlefield 1</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del>
-                        </h4>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">thêm vào
-                                    danh sách mong
-                                    muốn</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">thêm vào
-                                    so
-                                    sánh</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">xem
-                                    nhanh</span></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào
-                            giỏ</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /product -->
-
-            <div class="clearfix visible-sm visible-xs"></div>
-
-            <!-- product -->
-            <div class="col-md-3 col-xs-6">
-                <div class="product">
-                    <div class="product-img">
-                        <img src="./img/cod.jpg" alt="">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                            <span class="new">MỚI</span>
-                        </div>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Hành động</p>
-                        <h3 class="product-name"><a href="#">Call of Duty: WWII</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del>
-                        </h4>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">thêm vào
-                                    danh sách mong
-                                    muốn</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">thêm vào
-                                    so
-                                    sánh</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">xem
-                                    nhanh</span></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào
-                            giỏ</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /product -->
-
-            <!-- product -->
-            <div class="col-md-3 col-xs-6">
-                <div class="product">
-                    <div class="product-img">
-                        <img src="./img/csgo.jpg" alt="">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                            <span class="new">MỚI</span>
-                        </div>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Chiến thuật</p>
-                        <h3 class="product-name"><a href="#">Counter-Strike: Global Offensive</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del>
-                        </h4>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">thêm vào
-                                    danh sách mong
-                                    muốn</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">thêm vào
-                                    so
-                                    sánh</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">xem
-                                    nhanh</span></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào
-                            giỏ</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /product -->
-
         </div>
-        <!-- /row -->
     </div>
-    <!-- /container -->
 </div>
 <!-- /Section -->

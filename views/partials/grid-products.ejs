@@ -1,44 +1,27 @@
 <!-- Phần ô sản phẩm  -->
-<div class="row">
-    <% products.forEach((entry) => { %>
-    <div class="col-md-4 col-xs-6">
-        <div class="product">
-            <a href="/product/<%= entry._id %>">
-                <div class="product-img">
-                    <img src="<%= entry.imgSrc %>" alt="">
-                    <div class="product-label">
-                        <span class="sale">-30%</span>
-                        <span class="new">MỚI</span>
+<div class="product-show">
+    <div class="row">
+        <% products.forEach((entry) => { %>
+        <div class="col-md-3 col-xs-6">
+            <div class="product">
+                <a href="/product/<%= entry._id %>">
+                    <div class="product-img">
+                        <img src="<%= entry.imgSrc %>" alt="">
+                        <div class="product-label">
+                            <!-- <span class="sale">-30%</span>
+                        <span class="new">MỚI</span> -->
+                        </div>
                     </div>
-                </div>
-            </a>
-            <div class="product-body">
-                <p class="product-category"><%= entry.category %></p>
-                <h3 class="product-name"><a href="/product/<%= entry.name %>"><%= entry.name %></a></h3>
-                <h4 class="product-price"><%= entry.price %> <del class="product-old-price"><%= entry.old_price %></del>
-                </h4>
-                <div class="product-rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-                <div class="product-btns">
-                    <button class="add-to-wishlist">
-                        <i class="fa fa-heart-o"></i>
-                        <span class="tooltipp">thêm vào danh sách mong muốn</span></button>
-                    <button class="add-to-compare">
-                        <i class="fa fa-exchange"></i>
-                        <span class="tooltipp"> thêm vào so sánh</span>
-                    </button>
-                    <button class="quick-view">
-                        <i class="fa fa-eye"></i>
-                        <span class="tooltipp">xem nhanh</span>
-                    </button>
+                </a>
+                <div class="product-body">
+                    <p class="product-category"><%= entry.category %></p>
+                    <h3 class="product-name"><a href="/product/<%= entry.name %>"><%= entry.name %></a></h3>
+                    <h4 class="product-price"><%= entry.price %> <del
+                            class="product-old-price"><%= entry.old_price %></del>
+                    </h4>
                 </div>
             </div>
         </div>
+        <% }) %>
     </div>
-    <% }) %>
 </div>
