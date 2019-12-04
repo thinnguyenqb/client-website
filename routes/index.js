@@ -6,7 +6,7 @@ var Product = require('./../db/model/product');
 router.get('/', function(req, res, next) {
   Product.find({})
         .then(products => {
-            res.render('pages/index', { products: products })
+            res.render('pages/index', { products: products, user: req.user });
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 router.get('/store', function(req, res, next) {
   Product.find({})
         .then(products => {
-            res.render('pages/store', { products: products, name: 'Tất cả'})
+            res.render('pages/store', { products: products, name: 'Tất cả', user: req.user });
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -30,7 +30,7 @@ router.get('/store', function(req, res, next) {
 router.get('/product/:id', function(req, res, next) {
   Product.findOne({ _id: req.params.id })
         .then(product => {
-            res.render('pages/product', { product: product })
+            res.render('pages/product', { product: product, user: req.user });
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -42,7 +42,7 @@ router.get('/product/:id', function(req, res, next) {
 router.get('/category/:category', function(req, res, next) {
   Product.find({ category: req.params.category })
         .then(products => {
-            res.render('pages/store', { products: products, name: req.params.category})
+            res.render('pages/store', { products: products, name: req.params.category, user: req.user });
         })
         .catch(err => {
             console.log('Error: ', err);
@@ -54,34 +54,12 @@ router.get('/category/:category', function(req, res, next) {
 router.get('/producer/:producer', function(req, res, next) {
   Product.find({ producer: req.params.producer })
         .then(products => {
-            res.render('pages/store', { products: products, name: req.params.producer})
+            res.render('pages/store', { products: products, name: req.params.producer, user: req.user });
         })
         .catch(err => {
             console.log('Error: ', err);
             throw err;
         })
-});
-
-
-// Account
-router.get('/login', function(req, res, next) {
-  res.render('pages/account/login', { title: 'Express' });
-});
-
-router.get('/register', function(req, res, next) {
-  res.render('pages/account/register', { title: 'Express' });
-});
-
-router.get('/forget-password', function(req, res, next) {
-  res.render('pages/account/forget-password', { title: 'Express' });
-});
-
-router.get('/profile', function(req, res, next) {
-  res.render('pages/account/profile', { title: 'Express' });
-});
-
-router.get('/checkout', function(req, res, next) {
-  res.render('pages/checkout', { title: 'Express' });
 });
 
 module.exports = router;

@@ -34,8 +34,13 @@
 					<li><a href="#"><i class="fa fa-map-marker"></i> Trường Đại học Khoa học Tự nhiên</a></li>
 				</ul>
 				<ul class="header-links pull-right">
-					<li><a href="/login">Đăng nhập</a></li>
-					<li><a href="#">Đăng xuất</a></li>
+					<% if (typeof user != 'undefined') { %>
+					<li><a href="/users/profile">Xin chào <%= user.name %></a></li>
+					<li><a href="/users/logout">Đăng xuất</a></li>
+					<% } else { %>
+					<li><a href="/users/login">Đăng nhập</a></li>
+					<li><a href="/users/register">Đăng ký</a></li>
+					<% } %>
 				</ul>
 			</div>
 		</div>
@@ -128,9 +133,9 @@
 								</a>
 
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-									<a class="dropdown-item" href="/profile">Thông tin tài khoản<br></a>
+									<a class="dropdown-item" href="/users/profile">Thông tin tài khoản<br></a>
 									<a class="dropdown-item" href="#">Lịch sử đơn hàng<br></a>
-									<a class="dropdown-item" href="/login">Danh sách yêu thích<br></a>
+									<a class="dropdown-item" href="#">Danh sách yêu thích<br></a>
 								</div>
 							</div>
 						</div>
@@ -156,19 +161,20 @@
 					<!-- CATEGORY -->
 					<li>
 						<button type="button" class="btn btn-secondary button-style">
-							<a href="/" >Trang chủ</a>
+							<a href="/">Trang chủ</a>
 						</button>
 					</li>
 					<li>
 						<button type="button" class="btn btn-secondary button-style">
-							<a href="/store" >Tất cả sản phẩm</a>
+							<a href="/store">Tất cả sản phẩm</a>
 						</button>
 					</li>
 					<!-- CATEGORY -->
 					<li>
 						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle button-style" type="button" id="dropdownMenuButton"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<button class="btn btn-secondary dropdown-toggle button-style" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<a>Loại sản phẩm</a>
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -182,8 +188,9 @@
 					<!-- MANUFACTURER -->
 					<li>
 						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle button-style" type="button" id="dropdownMenuButton"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<button class="btn btn-secondary dropdown-toggle button-style" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
 								<a>Nhà sản xuất</a>
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -215,8 +222,8 @@
 					<div class="col-md-3 col-xs-6">
 						<div class="footer">
 							<h3 class="footer-title">Electro</h3>
-							<p>Đây là sản phẩm của đồ án cuối kì môn PHÁT TRIỂN ỨNG DỤNG WEB. 
-							   Sản phẩm được xây dựng trên template có sẵn dùng cho mục đích học tập và nghiên cứu.</p>
+							<p>Đây là sản phẩm của đồ án cuối kì môn PHÁT TRIỂN ỨNG DỤNG WEB.
+								Sản phẩm được xây dựng trên template có sẵn dùng cho mục đích học tập và nghiên cứu.</p>
 							<ul class="footer-links">
 								<li><a href="#"><i class="fa fa-map-marker"></i>Trường Đại học Khoa học Tự nhiên</a>
 								</li>
