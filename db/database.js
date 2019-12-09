@@ -1,6 +1,7 @@
 let mongoose = require('mongoose');
 
 const mongdodb_url = 'mongodb+srv://admin:admin@product-hkdj8.mongodb.net/test?retryWrites=true&w=majority';
+// const mongdodb_url = 'mongodb://localhost:27017/test';
 
 class Database {
     constructor() {
