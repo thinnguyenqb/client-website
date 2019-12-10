@@ -1,105 +1,136 @@
-<!-- Left Widget -->
-<div class="aside">
-    <h3 class="aside-title">Danh mục</h3>
-    <div class="checkbox-filter">
-        <div class="input-checkbox">
-            <input type="checkbox" id="category-1">
-            <label for="category-1">
-                <span></span>
-                Điện thoại
-                <small>(999)</small>
-            </label>
-        </div>
+<form action="/store" method="POST">
+    <!-- Left Widget -->
+    <div class="aside">
+        <h3 class="aside-title">Danh mục</h3>
+        <div class="checkbox-filter">
+            <div class="input-radio">
+                <input type="radio" id="category-0" name="category" value="" checked>
+                <label for="category-0">
+                    <span></span>
+                    Tất cả
+                    <!-- <small>(999)</small> -->
+                </label>
+            </div>
+        
+            <div class="input-radio">
+                <input type="radio" id="category-1" name="category" value="Điện%20thoại"
+                    <% if (category == "Điện thoại") { %> checked <% } %>>
+                <label for="category-1">
+                    <span></span>
+                    Điện thoại
+                    <!-- <small>(999)</small> -->
+                </label>
+            </div>
 
-        <div class="input-checkbox">
-            <input type="checkbox" id="category-2">
-            <label for="category-2">
-                <span></span>
-                Máy tính bảng
-                <small>(999)</small>
-            </label>
-        </div>
+            <div class="input-radio">
+                <input type="radio" id="category-2" name="category" value="Máy%20tính%20bảng"
+                    <% if (category == "Máy tính bảng") { %> checked <% } %>>
+                <label for="category-2">
+                    <span></span>
+                    Máy tính bảng
+                    <!-- <small>(999)</small> -->
+                </label>
+            </div>
 
-        <div class="input-checkbox">
-            <input type="checkbox" id="category-3">
-            <label for="category-3">
-                <span></span>
-                Laptop
-                <small>(999)</small>
-            </label>
-        </div>
+            <div class="input-radio">
+                <input type="radio" id="category-3" name="category" value="Laptop"
+                    <% if (category == "Laptop") { %> checked <% } %>>
+                <label for="category-3">
+                    <span></span>
+                    Laptop
+                    <!-- <small>(999)</small> -->
+                </label>
+            </div>
 
-        <div class="input-checkbox">
-            <input type="checkbox" id="category-4">
-            <label for="category-4">
-                <span></span>
-                Phụ kiện 
-                <small>(999)</small>
-            </label>
+            <div class="input-radio">
+                <input type="radio" id="category-4" name="category" value="Phụ%20kiện"
+                    <% if (category == "Phụ kiện") { %> checked <% } %>>
+                <label for="category-4">
+                    <span></span>
+                    Phụ kiện
+                    <!-- <small>(999)</small> -->
+                </label>
+            </div>
         </div>
     </div>
-</div>
-<!-- /aside Widget -->
+    <!-- /aside Widget -->
 
-<!-- aside Widget -->
-<div class="aside">
-    <h3 class="aside-title">Giá</h3>
-    <div class="price-filter">
-        <div id="price-slider"></div>
-        <div class="input-number price-min">
-            <input id="price-min" type="number">
-            <span class="qty-up">+</span>
-            <span class="qty-down">-</span>
-        </div>
-        <span>-</span>
-        <div class="input-number price-max">
-            <input id="price-max" type="number">
-            <span class="qty-up">+</span>
-            <span class="qty-down">-</span>
+    <!-- aside Widget -->
+    <div class="aside">
+        <h3 class="aside-title">Giá</h3>
+        <div class="price-filter">
+            <div id="price-slider"></div>
+            <div class="input-number price-min">
+                <input id="price-min" type="number">
+                <span class="qty-up">+</span>
+                <span class="qty-down">-</span>
+            </div>
+            <span>-</span>
+            <div class="input-number price-max">
+                <input id="price-max" type="number">
+                <span class="qty-up">+</span>
+                <span class="qty-down">-</span>
+            </div>
         </div>
     </div>
-</div>
-<!-- /aside Widget -->
+    <!-- /aside Widget -->
 
-<!-- aside Widget -->
-<div class="aside">
-    <h3 class="aside-title">Nhà sản xuất</h3>
-    <div class="checkbox-filter">
-        <div class="input-checkbox">
-            <input type="checkbox" id="brand-1">
-            <label for="brand-1">
-                <span></span>
-                Apple
-            </label>
-        </div>
-        <div class="input-checkbox">
-            <input type="checkbox" id="brand-2">
-            <label for="brand-2">
-                <span></span>
-                Samsung
-            </label>
-        </div>
-        <div class="input-checkbox">
-            <input type="checkbox" id="brand-4">
-            <label for="brand-4">
-                <span></span>
-                Lenovo
-            </label>
-        </div>
-        <div class="input-checkbox">
-            <input type="checkbox" id="brand-4">
-            <label for="brand-4">
-                <span></span>
-                Google
-            </label>
-        </div>
-        <div class="input-checkbox">
-            <input type="checkbox" id="brand-4">
-            <label for="brand-4">
-                <span></span>
-                Microsoft
-            </label>
+    <!-- aside Widget -->
+    <div class="aside">
+        <h3 class="aside-title">Nhà sản xuất</h3>
+        <div class="checkbox-filter">
+            <div class="input-radio">
+                <input type="radio" id="brand-0" name="producer" value="" checked>
+                <label for="brand-0">
+                    <span></span>
+                    Tất cả
+                    <!-- <small>(999)</small> -->
+                </label>
+            </div>
+
+            <div class="input-radio">
+                <input type="radio" id="brand-1" name="producer" value="Apple"
+                    <% if (producer == "Apple") { %> checked <% } %>>
+                <label for="brand-1">
+                    <span></span>
+                    Apple
+                </label>
+            </div>
+            <div class="input-radio">
+                <input type="radio" id="brand-2" name="producer" value="Samsung"
+                    <% if (producer == "Samsung") { %> checked <% } %>>
+                <label for="brand-2">
+                    <span></span>
+                    Samsung
+                </label>
+            </div>
+            <div class="input-radio">
+                <input type="radio" id="brand-3" name="producer" value="Lenovo"
+                    <% if (producer == "Lenovo") { %> checked <% } %>>
+                <label for="brand-4">
+                    <span></span>
+                    Lenovo
+                </label>
+            </div>
+            <div class="input-radio">
+                <input type="radio" id="brand-4" name="producer" value="Google"
+                    <% if (producer == "Google") { %> checked <% } %>>
+                <label for="brand-4">
+                    <span></span>
+                    Google
+                </label>
+            </div>
+            <div class="input-radio">
+                <input type="radio" id="brand-5" name="producer" value="Microsoft"
+                    <% if (producer == "Microsoft") { %> checked <% } %>>
+                <label for="brand-5">
+                    <span></span>
+                    Microsoft
+                </label>
+            </div>
         </div>
     </div>
-</div>
-<!-- /aside Widget -->
+    <!-- /aside Widget -->
+    <br><br>
+    <button type="submit" class="btn btn-danger">Lọc sản phẩm</button>
+</form>
