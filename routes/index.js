@@ -19,6 +19,8 @@ router.get('/store', function(req, res, next) {
 	// Validate query string
 	const category = (typeof req.query.category != 'undefined')?(req.query.category):'';
 	const producer = (typeof req.query.producer != 'undefined')?(req.query.producer):'';
+	const min = (typeof req.query.min != 'undefined')?parseInt(req.query.min):0;
+	const max = (typeof req.query.max != 'undefined')?parseInt(req.query.max):50000000;
 	const sort = (typeof req.query.sort != 'undefined')?(req.query.sort):'';
 	const count = (typeof req.query.count != 'undefined')?parseInt(req.query.count):12;
 	const page = (typeof req.query.page != 'undefined')?parseInt(req.query.page):1;
@@ -27,17 +29,21 @@ router.get('/store', function(req, res, next) {
 	let findParams = {};
 	let sortParams = {};
 	// URI query string
-	let classifyStr = '';
+	let filterStr = '';
 	let sortStr = '';
 
 	if (category != '') {
 		findParams.category = category;
-		classifyStr += ('category=' + category + '&');
+		filterStr += ('category=' + category + '&');
 	}
 	if (producer != '') {
 		findParams.producer = producer;
-		classifyStr += ('producer=' + producer + '&');
+		filterStr += ('producer=' + producer + '&');
 	}
+
+	findParams.price = { $gte: min, $lte: max };
+	filterStr += ('min=' + min + '&max=' + max + '&');
+
 	if (sort != '') {
 		sortStr += ('sort=' + sort + '&');
 		if (sort == 'name-asc') {
@@ -45,6 +51,12 @@ router.get('/store', function(req, res, next) {
 		}
 		if (sort == 'name-des') {
 			sortParams.name = -1;
+		}
+		if (sort == 'price-asc') {
+			sortParams.price = 1;
+		}
+		if (sort == 'price-des') {
+			sortParams.price = -1;
 		}
 	}
 
@@ -57,11 +69,13 @@ router.get('/store', function(req, res, next) {
 						products: products,
 						name: ' ' + category + ' ' + producer,
 						// Query string
-						classifyStr: classifyStr,
+						filterStr: filterStr,
 						sortStr: sortStr,
 						// Remain selection
 						category: category,
 						producer: producer,
+						min: min,
+						max: max,
 						sort: sort,
 						count: count,
 						page: page,
@@ -87,6 +101,8 @@ router.get('/store', function(req, res, next) {
 router.post('/store', function(req, res) {
 	const category = (typeof req.body.category != 'undefined')?(req.body.category):'';
 	const producer = (typeof req.body.producer != 'undefined')?(req.body.producer):'';
+	const min = req.body.min;
+	const max = req.body.max;
 
 	let queryStr = '';
 	if (category != '') {
@@ -95,6 +111,8 @@ router.post('/store', function(req, res) {
 	if (producer != '') {
 		queryStr += ('producer=' + producer + '&');
 	}
+	queryStr += 'min=' + min + '&';
+	queryStr += 'max=' + max + '&';
 	res.redirect('/store?' + queryStr);
 });
 

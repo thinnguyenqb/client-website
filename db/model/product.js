@@ -4,8 +4,8 @@ var productSchema = mongoose.Schema({
     name: { type: String },
     category: { type: String },
     imgSrc: { type: String },
-    price: { type: String },
-    old_price: { type: String },
+    price: { type: Number },
+    old_price: { type: Number },
     producer: { type: String },
     description: { type: String },
     configuration: { type: String }

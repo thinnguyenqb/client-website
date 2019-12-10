@@ -35,18 +35,20 @@
                         <label>
                             Sắp xếp theo:
                             <select class="input-select" onchange="location = this.value;">
-                                <option value="?<%= classifyStr %>" selected>Mới nhất</option>
-                                <option value="?<%= classifyStr %>sort=name-asc" <% if (sort == 'name-asc') { %> selected <% } %>>Tên (A -> Z)</option>
-                                <option value="?<%= classifyStr %>sort=name-des" <% if (sort == 'name-des') { %> selected <% } %>>Tên (Z -> A)</option>
+                                <option value="?<%= filterStr %>" selected>Mới nhất</option>
+                                <option value="?<%= filterStr %>sort=name-asc" <% if (sort == 'name-asc') { %> selected <% } %>>Tên (A -> Z)</option>
+                                <option value="?<%= filterStr %>sort=name-des" <% if (sort == 'name-des') { %> selected <% } %>>Tên (Z -> A)</option>
+                                <option value="?<%= filterStr %>sort=price-asc" <% if (sort == 'price-asc') { %> selected <% } %>>Giá (thấp -> cao)</option>
+                                <option value="?<%= filterStr %>sort=price-des" <% if (sort == 'price-des') { %> selected <% } %>>Giá (cao -> thấp)</option>
                             </select>
                         </label>
 
                         <label>
                             Số sản phẩm mỗi trang:
                             <select class="input-select" onchange="location = this.value;">
-                                <option value="?<%= classifyStr %><%= sortStr %>count=12&page=1" <% if (count == 12) { %> selected <% } %>>12</option>
-                                <option value="?<%= classifyStr %><%= sortStr %>count=8&page=1" <% if (count == 8) { %> selected <% } %>>8</option>
-                                <option value="?<%= classifyStr %><%= sortStr %>count=4&page=1" <% if (count == 4) { %> selected <% } %>>4</option>
+                                <option value="?<%= filterStr %><%= sortStr %>count=12&page=1" <% if (count == 12) { %> selected <% } %>>12</option>
+                                <option value="?<%= filterStr %><%= sortStr %>count=8&page=1" <% if (count == 8) { %> selected <% } %>>8</option>
+                                <option value="?<%= filterStr %><%= sortStr %>count=4&page=1" <% if (count == 4) { %> selected <% } %>>4</option>
                             </select>
                         </label>
                     </div>
@@ -69,7 +71,7 @@
                     <ul class="store-pagination">
                         <% for (;i <= countPage; i++) { %>
                         <li <% if (page == i) { %> class="active" <% } %>>
-                            <a <% if (page != i) { %> href="?<%= classifyStr %><%= sortStr %>count=<%= count %>&page=<%= i %>" <% } %> ><%= i %></a>
+                            <a <% if (page != i) { %> href="?<%= filterStr %><%= sortStr %>count=<%= count %>&page=<%= i %>" <% } %> ><%= i %></a>
                         </li>
                         <% } %>
                         <!-- <li><a href="#">2</a></li>
