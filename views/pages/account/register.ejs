@@ -1,31 +1,32 @@
-<div class="container" style="padding: 50px;">
-    <h1>Đăng ký</h1>
-    <% include ../../partials/messages %>
-    <form action="/users/register" method="POST" name="registerForm">
-        <div class="form-group">
-            <label for="name">Họ tên</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Nhập họ tên" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                placeholder="Nhập email" required>
-            <small id="emailHelp" class="form-text text-muted">Chúng tôi không bao giờ chia sẻ email của bạn với người
-                khác.</small>
-        </div>
-        <div class="form-group">
-            <label for="password">Mật khẩu</label>
-            <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" pattern=".{6,}"
-                title="Mật khẩu phải có độ dài hơn 6 kí tự" required>
-        </div>
-        <div class="form-group">
-            <label for="passwordConfirm">Nhập lại mật khẩu</label>
-            <input type="password" class="form-control" id="passwordConfirm" name="password"
-                placeholder="Nhập lại mật khẩu" oninput="check(this)" required>
-        </div>
-        <button type="submit" value="Submit" class="btn btn-primary">Đăng ký</button>
-    </form>
+<div class="container">
+    <div class="register">
+        <h1>Đăng ký</h1>
+        <% include ../../partials/messages %>
+        <form action="/users/register" method="POST" name="registerForm">
+            <div class="form-group">
+                <label for="name">Họ tên</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nhập họ tên" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                    placeholder="Nhập email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" pattern=".{6,}"
+                    title="Mật khẩu phải có độ dài hơn 6 kí tự" required>
+            </div>
+            <div class="form-group">
+                <label for="passwordConfirm">Nhập lại mật khẩu</label>
+                <input type="password" class="form-control" id="passwordConfirm" name="password"
+                    placeholder="Nhập lại mật khẩu" oninput="check(this)" required>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-primary">Đăng ký</button>
+        </form>
+    </div>
 </div>
+
 <script>
     function check(input) {
         if (input.value != document.getElementById('password').value) {

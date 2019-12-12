@@ -1,22 +1,28 @@
-var createError = require('http-errors');
+// set up ======================================================================
 var express = require('express');
+var app = express();
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 var expressLayouts = require('express-ejs-layouts');
+
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+var createError = require('http-errors');
 
+// router files =================================================
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var Database = require('./db/database');
-// Passport config
+
+// Passport config =====================================================
 require('./config/passport')(passport);
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -5,7 +5,7 @@ const passport = require('passport');
 const { ensureAuthenticated } = require('../config/auth');
 
 // User Model
-var User = require('./../db/model/user');
+var User = require('./../models/user');
 
 // Login Page
 router.get('/login', function(req, res, next) {
