@@ -78,8 +78,9 @@
                         <a class="review-link" href="#tab3">10 đánh giá | Thêm đánh giá</a>
                     </div>
                     <div>
-                        <h3 class="product-price"><%= product.price %> <del
-                                class="product-old-price"><%= product.old_price %></del></h3>
+                        <h3 class="product-price"><%= priceConverter(product.price) %> Đ
+                            <del class="product-old-price"><%= priceConverter(product.old_price) %> Đ</del>
+                        </h3>
                         <span class="product-available">Còn hàng</span>
                     </div>
 

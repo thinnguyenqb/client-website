@@ -4,9 +4,10 @@ var Product = require('../models/product');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	// 
 	Product.find({})
 		.then(products => {
-			res.render('pages/index', { products: products, user: req.user });
+			res.render('pages/index', { products: products, user: req.user, priceConverter: numberWithCommas });
 		})
 		.catch(err => {
 			console.log('Error: ', err);
@@ -60,13 +61,14 @@ router.get('/store', function(req, res, next) {
 		}
 	}
 
-	Product.find(findParams)
-		.then(allProducts => {
+	Product.count(findParams)
+		.then(countAll => {
 			Product.find(findParams).sort(sortParams).limit(count).skip((page - 1) * count)
 				.then(products => {
 					res.render('pages/store', {
 						user: req.user, // User
 						products: products,
+						priceConverter: numberWithCommas,
 						// Query string
 						filterStr: filterStr,
 						sortStr: sortStr,
@@ -79,9 +81,9 @@ router.get('/store', function(req, res, next) {
 						count: count,
 						page: page,
 						// Creating page index
-						countPage: parseInt(allProducts.length / count +
-							((allProducts.length % count == 0) ? 0 : 1)),
-						countAll: allProducts.length,
+						countPage: parseInt(countAll / count +
+							((countAll % count == 0) ? 0 : 1)),
+						countAll: countAll,
 						i: 1
 					});
 				})
@@ -119,13 +121,17 @@ router.post('/store', function(req, res) {
 router.get('/product/:id', function(req, res, next) {
 	Product.findOne({ _id: req.params.id })
 		.then(product => {
-			res.render('pages/product', { product: product, user: req.user });
+			res.render('pages/product', { product: product, user: req.user, priceConverter: numberWithCommas });
 		})
 		.catch(err => {
 			console.log('Error: ', err);
 			throw err;
 		});
 });
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 // // Categories
 // router.get('/category/:category', function(req, res, next) {
