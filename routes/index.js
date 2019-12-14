@@ -67,7 +67,6 @@ router.get('/store', function(req, res, next) {
 					res.render('pages/store', {
 						user: req.user, // User
 						products: products,
-						name: ' ' + category + ' ' + producer,
 						// Query string
 						filterStr: filterStr,
 						sortStr: sortStr,
