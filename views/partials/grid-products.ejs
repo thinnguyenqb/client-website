@@ -3,7 +3,7 @@
     <div class="row">
         <% products.forEach((entry) => { %>
         <div class="col-md-3 col-xs-6">
-            <div class="product">
+            <div class="product product_store">
                 <a href="/product/<%= entry._id %>">
                     <div class="product-img">
                         <img src="<%= entry.imgSrc %>" alt="">
@@ -16,8 +16,8 @@
                 <div class="product-body">
                     <p class="product-category"><%= entry.category %></p>
                     <h3 class="product-name"><a href="/product/<%= entry.name %>"><%= entry.name %></a></h3>
-                    <h4 class="product-price"><%= priceConverter(entry.price) %> Đ <del
-                            class="product-old-price"><%= priceConverter(entry.old_price) %> Đ</del>
+                    <h4 class="product-price"><%= priceConverter(entry.price) %> đ <del
+                            class="product-old-price"><%= priceConverter(entry.old_price) %> đ</del>
                     </h4>
                 </div>
             </div>

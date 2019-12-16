@@ -48,7 +48,7 @@ exports.displayProducts = (req, res) => {
 		.then(countAll => {
 			Product.find(findParams).sort(sortParams).limit(count).skip((page - 1) * count)
 				.then(products => {
-					res.render('pages/store', {
+					res.render('pages/product/store', {
 						user: req.user, // User
 						products: products,
 						priceConverter: functions.numberWithCommas,
@@ -95,7 +95,7 @@ exports.filter = (req, res) => {
 exports.productInfo = (req, res) => {
     Product.findOneAndUpdate({ _id: req.params.id }, {$inc : {'views' : 1}})
 		.then(product => {
-			res.render('pages/product', {
+			res.render('pages/product/product', {
 				product: product,
 				views: product.views + 1,
                 user: req.user,

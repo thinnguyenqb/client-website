@@ -54,9 +54,11 @@ Table OF Contents
 /*----------------------------*\
 	Typography
 \*----------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Tahoma';
+	src: url('/fonts/Tahoma.otf')  format('opentype');
   font-weight: 400;
   color: #333;
 }
@@ -293,7 +295,7 @@ textarea.input {
 
 .section {
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .section-title {
@@ -862,9 +864,12 @@ textarea.input {
   box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
-  height: 360px;
+  height: 400px;
 }
 
+.product_store{
+  height: 350px;
+}
 .product:hover {
   -webkit-box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
   box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
