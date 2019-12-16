@@ -93,10 +93,11 @@ exports.filter = (req, res) => {
 }
 
 exports.productInfo = (req, res) => {
-    Product.findOne({ _id: req.params.id })
+    Product.findOneAndUpdate({ _id: req.params.id }, {$inc : {'views' : 1}})
 		.then(product => {
 			res.render('pages/product', {
-                product: product,
+				product: product,
+				views: product.views + 1,
                 user: req.user,
                 priceConverter: functions.numberWithCommas
             });
