@@ -868,7 +868,7 @@ textarea.input {
 }
 
 .product_store{
-  height: 350px;
+  height: 360px;
 }
 .product:hover {
   -webkit-box-shadow: 0px 0px 6px 0px #E4E7ED, 0px 0px 0px 2px #D10024;
@@ -2344,4 +2344,14 @@ textarea.input {
 .register h1{
   font-size: 30px;
   text-align: center;
+}
+
+/* ============================== */
+
+.dropdown-toggle p{
+  padding-top: 5px;
+}
+
+.dropdown{
+  padding-top: 2px;
 }
