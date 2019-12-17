@@ -131,16 +131,16 @@
                 <div id="product-tab">
                     <!-- product tab nav -->
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Mô tả sản phẩm</a></li>
+                        <li><a data-toggle="tab" href="#tab1">Mô tả sản phẩm</a></li>
                         <li><a data-toggle="tab" href="#tab2">Thông tin sản phẩm</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Nhận xét</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab3">Nhận xét</a></li>
                     </ul>
                     <!-- /product tab nav -->
 
                     <!-- product tab content -->
                     <div class="tab-content">
                         <!-- tab1  -->
-                        <div id="tab1" class="tab-pane fade in active">
+                        <div id="tab1" class="tab-pane fade in">
                             <div class="row">
                                 <div class="col-md-12">
                                     <a style="color: black;"><%= product.description %></a>
@@ -175,7 +175,7 @@
                         <!-- /tab2  -->
 
                         <!-- tab3  -->
-                        <div id="tab3" class="tab-pane fade in">
+                        <div id="tab3" class="tab-pane fade in active">
                             <div class="row">
                                 <!-- Rating -->
                                 <div class="col-md-3">
@@ -265,64 +265,14 @@
                                 <div class="col-md-6">
                                     <div id="reviews">
                                         <ul class="reviews">
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27/12/2018, 08:00 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27/12/2018, 08:00 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27/12/2018, 08:00 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
+                                            <% include ../../partials/comments %>
                                         </ul>
                                         <ul class="reviews-pagination">
-                                            <li class="active">1</li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                            <% for (;i <= countPages; i++) { %>
+                                                <li <% if (page == i) { %> class="active" <% } %>>
+                                                    <a <% if (page != i) { %> href="?page=<%= i %>" <% } %> ><%= i %></a>
+                                                </li>
+                                            <% } %>
                                         </ul>
                                     </div>
                                 </div>
@@ -331,10 +281,10 @@
                                 <!-- Review Form -->
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form class="review-form">
-                                            <input class="input" type="text" placeholder="Họ tên">
-                                            <input class="input" type="email" placeholder="Email">
-                                            <textarea class="input" placeholder="Nhận xét của bạn"></textarea>
+                                        <form class="review-form" action="/product/comment/<%= product._id %>" method="POST">
+                                            <input class="input" type="text" placeholder="Họ tên" name="name"
+                                            <% if (typeof user != 'undefined') { %> value="<%= user.name %>"<% } %> required>
+                                            <textarea class="input" placeholder="Nhận xét của bạn" name="content" required></textarea>
                                             <div class="input-rating">
                                                 <span>Đánh giá của bạn: </span>
                                                 <div class="stars">
@@ -350,7 +300,7 @@
                                                         for="star1"></label>
                                                 </div>
                                             </div>
-                                            <button class="primary-btn">Đăng</button>
+                                            <button class="primary-btn" type="submit">Đăng</button>
                                         </form>
                                     </div>
                                 </div>

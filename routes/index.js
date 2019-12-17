@@ -15,4 +15,7 @@ router.post('/store', productControllers.filter);
 // Product Information
 router.get('/product/:id', productControllers.productInfo);
 
+// Post comment
+router.post('/product/comment/:id', productControllers.comment);
+
 module.exports = router;
