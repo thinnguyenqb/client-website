@@ -15,4 +15,6 @@ router.post('/store', productControllers.filter);
 // Product Information
 router.get('/product/:id', productControllers.productInfo);
 
+//Search a product 
+router.get('/search', productControllers.search);
 module.exports = router;

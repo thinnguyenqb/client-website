@@ -62,7 +62,7 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form>
+                            <form action="/search">
                                 <select class="input-select">
                                     <option value="0">Tất cả</option>
                                     <option value="1">Điện thoại</option>
@@ -70,7 +70,11 @@
                                     <option value="3">Laptop</option>
                                     <option value="4">Phụ kiện</option>
                                 </select>
-                                <input class="input" placeholder="Nhập từ khóa">
+                                <input class="input"  auto-focus tab-index='1' type='text' auto-complete='search' 
+                                name="name"
+                                id='inputSearch'
+                                placeholder="Nhập từ khóa"
+                                autocomplete="off">
                                 <button class="search-btn">Tìm kiếm</button>
                             </form>
                         </div>
@@ -157,7 +161,7 @@
                 <ul class="main-nav nav navbar-nav">
                     <!-- CATEGORY -->
                     <li>
-                        <button type="button" class="btn btn-secondary button-style">
+                        <button data-toggle="dropdown" type="button" class="btn btn-secondary button-style">
                             <a href="/">Trang chủ</a>
                         </button>
                     </li>

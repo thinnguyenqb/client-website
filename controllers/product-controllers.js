@@ -94,7 +94,7 @@ exports.filter = (req, res) => {
 
 exports.productInfo = (req, res) => {
 	Product.findOneAndUpdate({ _id: req.params.id }, { $inc: { 'views': 1 } })
-		.then(product => {
+	    .then(product => {	
 			Product.find({ producer: product.producer }) // Find related product
 				.then(relatedProducts => {
 					res.render('pages/product/product', {
@@ -110,4 +110,26 @@ exports.productInfo = (req, res) => {
 			console.log('Error: ', err);
 			throw err;
 		});
+}
+
+exports.search = (req, res)=> {
+	const name = req.query.name;
+	Product.find({
+		$or:[
+			{name: new RegExp(name, "i")},
+			{category: new RegExp(name, "i")}
+		]
+	},(err,products)=>{
+		if(err) throw err;
+		else{
+			const title = "Kết quả cho \""+name+"\"";
+			const countProduct = "";
+			res.render('pages/product/search', {
+				products: products,
+				priceConverter: functions.numberWithCommas,
+				title: title,
+				countProduct: products.length
+			});
+		}
+	});
 }
