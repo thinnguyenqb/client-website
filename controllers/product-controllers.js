@@ -1,6 +1,11 @@
+// Model
 var Product = require('../models/product');
+var Comment = require('../models/comment');
+
+// Function
 var functions = require('./functions');
 
+// Store
 exports.displayProducts = (req, res) => {
 	// Validate query string
 	const category = (typeof req.query.category != 'undefined') ? (req.query.category) : '';
@@ -44,9 +49,9 @@ exports.displayProducts = (req, res) => {
 		}
 	}
 
-	Product.count(findParams)
+	Product.countDocuments(findParams) // Count the total number of products
 		.then(countAll => {
-			Product.find(findParams).sort(sortParams).limit(count).skip((page - 1) * count)
+			Product.find(findParams).sort(sortParams).limit(count).skip((page - 1) * count) // Sorting and Pagination
 				.then(products => {
 					res.render('pages/product/store', {
 						user: req.user, // User
@@ -54,10 +59,10 @@ exports.displayProducts = (req, res) => {
 						priceConverter: functions.numberWithCommas,
 						// Query string
 						filterStr: filterStr, sortStr: sortStr,
-						// Remain selection
+						// Remain selections
 						category: category, producer: producer, min: min, max: max, sort: sort, count: count, page: page,
 						// Creating page index
-						countPage: parseInt(countAll / count +
+						countPages: parseInt(countAll / count +
 							((countAll % count == 0) ? 0 : 1)),
 						countAll: countAll,
 						i: 1
@@ -74,6 +79,7 @@ exports.displayProducts = (req, res) => {
 		});
 }
 
+// Advance Filter
 exports.filter = (req, res) => {
 	const category = (typeof req.body.category != 'undefined') ? (req.body.category) : '';
 	const producer = (typeof req.body.producer != 'undefined') ? (req.body.producer) : '';
@@ -92,18 +98,49 @@ exports.filter = (req, res) => {
 	res.redirect('/store?' + queryStr);
 }
 
+// Product Info
 exports.productInfo = (req, res) => {
-	Product.findOneAndUpdate({ _id: req.params.id }, { $inc: { 'views': 1 } })
-	    .then(product => {	
-			Product.find({ producer: product.producer }) // Find related product
-				.then(relatedProducts => {
-					res.render('pages/product/product', {
-						product: product,
-						views: product.views + 1,
-						user: req.user,
-						priceConverter: functions.numberWithCommas,
-						products: relatedProducts
-					});
+	const page = (typeof req.query.page != 'undefined') ? parseInt(req.query.page) : 1;
+	const commentsPerPage = 3;
+
+	Product.findOneAndUpdate({ _id: req.params.id }, { $inc: { 'views': 1 } }) // Find the product that matches ID and increase views by 1
+		.then(product => {
+			Comment.countDocuments({ productID: product._id }) // Count all comments that match product ID
+				.then(countAll => {
+					Comment.find({ productID: product._id }) 
+						.limit(commentsPerPage).skip((page - 1) * commentsPerPage) // Pagination
+						.then(comments => {
+							Product.find({ producer: product.producer }) // Find related products
+								.then(relatedProducts => {
+									res.render('pages/product/product', {
+										user: req.user,
+										product: product,
+										views: product.views + 1, // Actual views will increase later
+										priceConverter: functions.numberWithCommas,
+										// Comments
+										comments: comments,
+										// Creating page index
+										countPages: parseInt(countAll / commentsPerPage +
+											((countAll % commentsPerPage == 0) ? 0 : 1)),
+										page: page,
+										i: 1,
+										// Related products
+										products: relatedProducts
+									});
+								})
+								.catch(err => {
+									console.log('Error: ', err);
+									throw err;
+								});
+						})
+						.catch(err => {
+							console.log('Error: ', err);
+							throw err;
+						});
+				})
+				.catch(err => {
+					console.log('Error: ', err);
+					throw err;
 				});
 		})
 		.catch(err => {
@@ -132,4 +169,19 @@ exports.search = (req, res)=> {
 			});
 		}
 	});
+}
+// Product comment
+exports.comment = (req, res) => {
+	const productID = req.params.id;
+	const username = req.body.name;
+	const content = req.body.content;
+	const newComment = new Comment({ productID, username, content });
+	newComment.save()
+		.then(comment => {
+			res.redirect('/product/' + req.params.id);
+		})
+		.catch(err => {
+			console.log('Error: ', err);
+			throw err;
+		});
 }

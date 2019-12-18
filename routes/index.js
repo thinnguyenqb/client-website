@@ -17,4 +17,7 @@ router.get('/product/:id', productControllers.productInfo);
 
 //Search a product 
 router.get('/search', productControllers.search);
+// Post comment
+router.post('/product/comment/:id', productControllers.comment);
+
 module.exports = router;

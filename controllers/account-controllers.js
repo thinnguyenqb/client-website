@@ -32,7 +32,7 @@ exports.registerHandle = (req, res) => {
                     errors.push({ msg: 'Email đã được đăng ký. Vui lòng nhập email khác.' });
                     res.render('pages/account/register', { errors });
                 } else {
-                    const newUser = new User({ name, email, password })
+                    const newUser = new User({ name, email, password });
 
                     // Hash Password
                     bcrypt.genSalt(10, (err, salt) =>
@@ -49,7 +49,7 @@ exports.registerHandle = (req, res) => {
                                 .catch(err => console.log(err));
                         }));
                 }
-            })
+            });
     }
 }
 
