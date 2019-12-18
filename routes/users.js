@@ -25,6 +25,6 @@ router.get('/profile', ensureAuthenticated, accountControllers.profile);
 router.get('/forget-password', accountControllers.forgetPassword);
 
 // Checkout
-router.get('/checkout', accountControllers.checkOut);
+router.get('/checkout', ensureAuthenticated, accountControllers.checkOut);
 
 module.exports = router;

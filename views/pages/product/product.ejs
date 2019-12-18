@@ -88,15 +88,17 @@
                     </div>
 
                     <div class="add-to-cart">
-                        <div class="qty-label">
-                            Số lượng
-                            <div class="input-number">
-                                <input type="number">
-                                <span class="qty-up">+</span>
-                                <span class="qty-down">-</span>
+                        <form action="/product/add-to-cart/<%= product._id %>" method="POST">
+                            <div class="qty-label">
+                                Số lượng
+                                <div class="input-number">
+                                    <input type="number" value="1" min="1" name="quantity">
+                                    <span class="qty-up">+</span>
+                                    <span class="qty-down">-</span>
+                                </div>
                             </div>
-                        </div>
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
+                            <button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
+                        </form>
                     </div>
 
                     <!-- <ul class="product-btns">

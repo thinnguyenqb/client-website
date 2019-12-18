@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Giỏ hàng</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Đơn giá</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Tổng cộng</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% items.forEach(entry => { %>
+            <tr>
+                <th scope="row"><%= i %></th>
+                <td><%= entry.productName %></td>
+                <td><%= priceConverter(entry.price) %> đ</td>
+                <td>
+                    <div class="qty-label">
+                        <div class="input-number">
+                            <input type="number" value="<%= entry.quantity %>" min="1" name="quantity">
+                            <span class="qty-up">+</span>
+                            <span class="qty-down">-</span>
+                        </div>
+                    </div>
+                </td>
+                <td><%= priceConverter(entry.quantity * entry.price) %> đ</td>
+                <td>
+                    <form action="/delete/<%= i - 1 %>" method="POST">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+            <% i++; }) %>
+        </tbody>
+    </table>
+    <div>
+        <a href="/store"><button type="button" class="btn btn-outline-danger">Tiếp tục mua hàng</button></a>
+    </div>
+    <div>
+        <a href="/users/checkout"><button type="button" class="btn btn-danger">Thanh toán</button></a>
+    </div>
+</div>

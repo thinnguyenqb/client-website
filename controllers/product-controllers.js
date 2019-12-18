@@ -5,6 +5,9 @@ var Comment = require('../models/comment');
 // Function
 var functions = require('./functions');
 
+// Shopping Cart Items
+var items = [];
+
 // Store
 exports.displayProducts = (req, res) => {
 	// Validate query string
@@ -103,7 +106,8 @@ exports.productInfo = (req, res) => {
 	const page = (typeof req.query.page != 'undefined') ? parseInt(req.query.page) : 1;
 	const commentsPerPage = 3;
 
-	Product.findOneAndUpdate({ _id: req.params.id }, { $inc: { 'views': 1 } }) // Find the product that matches ID and increase views by 1
+	// Find the product that matches ID and increase views by 1
+	Product.findOneAndUpdate({ _id: req.params.id }, { $inc: { 'views': 1 } }, {new: true, useFindAndModify: false})
 		.then(product => {
 			Comment.countDocuments({ productID: product._id }) // Count all comments that match product ID
 				.then(countAll => {
@@ -149,6 +153,7 @@ exports.productInfo = (req, res) => {
 		});
 }
 
+// Search
 exports.search = (req, res)=> {
 	const name = req.query.name;
 	Product.find({
@@ -162,6 +167,7 @@ exports.search = (req, res)=> {
 			const title = "Kết quả cho \""+name+"\"";
 			const countProduct = "";
 			res.render('pages/product/search', {
+				user: req.user,
 				products: products,
 				priceConverter: functions.numberWithCommas,
 				title: title,
@@ -170,6 +176,7 @@ exports.search = (req, res)=> {
 		}
 	});
 }
+
 // Product comment
 exports.comment = (req, res) => {
 	const productID = req.params.id;
@@ -184,4 +191,44 @@ exports.comment = (req, res) => {
 			console.log('Error: ', err);
 			throw err;
 		});
+}
+
+// Add to cart
+exports.addToCart = (req, res) => {
+	const productID = req.params.id;
+	const quantity = req.body.quantity;
+
+	// Find product
+	Product.findOne({ _id: productID })
+		.then(product => {
+			// Add to items array
+			items.push({
+				productName: product.name,
+				price: product.price,
+				quantity: quantity
+			});
+			res.redirect('/cart');
+		})
+		.catch(err => {
+			console.log('Error: ', err);
+			throw err;
+		});
+}
+
+// Cart
+exports.cart = (req, res) => {
+	res.render('pages/order/cart', {
+		user: req.user,
+		items: items,
+		i: 1,
+		priceConverter: functions.numberWithCommas
+	});
+}
+
+// Delete item from cart
+exports.delete = (req, res) => {
+	const index = req.params.index;
+
+	items.splice(index, 1);
+	res.redirect('/cart');
 }
