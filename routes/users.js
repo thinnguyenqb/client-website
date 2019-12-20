@@ -27,4 +27,8 @@ router.get('/forget-password', accountControllers.forgetPassword);
 // Checkout
 router.get('/checkout', ensureAuthenticated, accountControllers.checkOut);
 
+// Order Management
+router.get('/order-management', ensureAuthenticated, accountControllers.orderManagement);
+
+
 module.exports = router;

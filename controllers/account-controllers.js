@@ -83,3 +83,8 @@ exports.forgetPassword = (req, res) => {
 exports.checkOut = (req, res) => {
     res.render('pages/order/checkout', { user: req.user });
 }
+
+// OrderManagement
+exports.orderManagement = (req, res) => {
+    res.render('pages/order/order-management', { user: req.user });
+}

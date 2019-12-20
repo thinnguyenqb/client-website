@@ -1,45 +1,137 @@
 <div class="container">
-    <h1>Giỏ hàng</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Đơn giá</th>
-                <th scope="col">Số lượng</th>
-                <th scope="col">Tổng cộng</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% items.forEach(entry => { %>
-            <tr>
-                <th scope="row"><%= i %></th>
-                <td><%= entry.productName %></td>
-                <td><%= priceConverter(entry.price) %> đ</td>
-                <td>
-                    <div class="qty-label">
+    <div class="cart_container">
+        <div class="home">
+            <div class="home_container ">
+                <div class="home_content text-center">
+                    <div class="home_title">Thông tin tài khoản</div>
+                </div>
+            </div>
+        </div>
+        <% if (!items || items.length == 0) {%>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th id="col-cart-1" scope="col">Sản phẩm</th>
+                    <th id="col-cart-2" scope="col">Đơn giá</th>
+                    <th id="col-cart-2" scope="col">Số lượng</th>
+                    <th id="col-cart-2" scope="col">Tổng cộng</th>
+                    <th id="del-product" scope="col"></th>
+                </tr>
+            </thead>
+        </table>
+        <p>Không có sản phẩm</p>
+        <div class="buy-checkout">
+            <a href="/store"><button type="button" class="btn btn-outline-danger">Tiếp tục mua hàng</button></a>
+        </div>
+        <%} else { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th id="col-cart-1" scope="col">Sản phẩm</th>
+                    <th id="col-cart-2" scope="col">Đơn giá</th>
+                    <th id="col-cart-2" scope="col">Số lượng</th>
+                    <th id="col-cart-2" scope="col">Tổng cộng</th>
+                    <th id="del-product" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% items.forEach(entry => { %>
+                <tr>
+                    <td class="img-info-prod">
+                        <div><a href="/product/<%= entry.id %>"><img src="<%= entry.productImage %>" alt=""></a>
+                            <a href="/product/<%= entry.id %>">
+                                <p><%= entry.productName %></p>
+                            </a>
+
+                        </div>
+                    </td>
+                    <td id="col-cart-3">
+                        <p><%= priceConverter(entry.price) %> đ</p>
+                    </td>
+                    <td id="col-cart-3">
+                        <div class="qty-label d-flex justify-content-around quantity-prod"></div>
                         <div class="input-number">
+                            <span class="qty-down">-</span>
                             <input type="number" value="<%= entry.quantity %>" min="1" name="quantity">
                             <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
                         </div>
+                    </td>
+                    <td id="col-cart-3">
+                        <p><%= priceConverter(entry.quantity * entry.price) %> đ</p>
+                    </td>
+                    <td id="col-cart-4">
+                        <form action="/delete/<%= i - 1 %>" method="POST">
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+                <% i++; }) %>
+            </tbody>
+        </table>
+        <div class="buy-checkout">
+            <a href="#"><button type="button" class="btn btn-outline-danger">Cập nhật giỏ hàng</button></a>
+            <a href="#"><button type="button" class="btn btn-danger">Xóa tất cả</button></a>
+        </div>
+        <div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-4 form-total-money">
+                <div class="summary summary-cart">
+                    <h3 class="summary-title text-center">Tổng tiền giỏ hàng</h3><!-- End .summary-title -->
+
+                    <table class="table table-summary">
+                        <tbody>
+                            <tr class="summary-subtotal">
+                                <td>Tạm tính:</td>
+                                <td>160.0000000</td>
+                            </tr><!-- End .summary-subtotal -->
+                            <tr class="summary-shipping">
+                                <td>Phí giao hàng:</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="summary-shipping-row">
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="free-shipping" name="shipping"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="free-shipping">Free Shipping</label>
+                                    </div><!-- End .custom-control -->
+                                </td>
+                                <td style="color: rgb(13, 128, 46);"> Free</td>
+                            </tr><!-- End .summary-shipping-row -->
+                            <tr class="summary-shipping-row">
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="standart-shipping" name="shipping"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="standart-shipping">Standart:(3 - 4 ngày)</label>
+                                    </div><!-- End .custom-control -->
+                                </td>
+                                <td>16.000đ</td>
+                            </tr><!-- End .summary-shipping-row -->
+                            <tr class="summary-shipping-row">
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="express-shipping" name="shipping"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="express-shipping">Express:(1 ngày)</label>
+                                    </div><!-- End .custom-control -->
+                                </td>
+                                <td>20.000đ</td>
+                            </tr>
+                            <tr class="summary-total">
+                                <td>Tổng cộng:</td>
+                                <td>$160.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="buy-checkout-2">
+                        <a href="/users/checkout"><button type="button" class="btn btn-danger continue-checkout">Thanh toán ngay</button></a>
+                        <a href="/store"><button type="button" class="btn btn-danger continue-shopping">Tiếp tục mua hàng</button></a>
                     </div>
-                </td>
-                <td><%= priceConverter(entry.quantity * entry.price) %> đ</td>
-                <td>
-                    <form action="/delete/<%= i - 1 %>" method="POST">
-                        <button type="submit" class="btn btn-danger">Xóa</button>
-                    </form>
-                </td>
-            </tr>
-            <% i++; }) %>
-        </tbody>
-    </table>
-    <div>
-        <a href="/store"><button type="button" class="btn btn-outline-danger">Tiếp tục mua hàng</button></a>
-    </div>
-    <div>
-        <a href="/users/checkout"><button type="button" class="btn btn-danger">Thanh toán</button></a>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <% } %>
     </div>
 </div>

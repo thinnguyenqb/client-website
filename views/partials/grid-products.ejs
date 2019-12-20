@@ -15,7 +15,7 @@
                 </a>
                 <div class="product-body">
                     <p class="product-category"><%= entry.category %></p>
-                    <h3 class="product-name"><a href="/product/<%= entry.name %>"><%= entry.name %></a></h3>
+                    <h3 class="product-name"><a href="/product/<%= entry._id %>"><%= entry.name %></a></h3>
                     <h4 class="product-price"><%= priceConverter(entry.price) %> đ <del
                             class="product-old-price"><%= priceConverter(entry.old_price) %> đ</del>
                     </h4>

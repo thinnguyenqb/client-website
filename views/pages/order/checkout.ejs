@@ -28,94 +28,36 @@
                 <!-- Billing Details -->
                 <div class="billing-details">
                     <div class="section-title">
-                        <h3 class="title">Địa chỉ thanh toán</h3>
+                        <h3 class="title">Thông tin nhận hàng</h3>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="first-name" placeholder="Tên">
+                        <h5> Họ tên:* </h5> 
+                        <p> &emsp;&emsp;&emsp;<%=user.name%></p>
+                        <br>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="last-name" placeholder="Họ">
+                        <h5> Email:* </h5> 
+                        <p> &emsp;&emsp;&emsp;<%=user.email%></p>
+                        <br>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
+                        <h5> Địa chỉ:* </h5> 
+                        <p> &emsp;&emsp;&emsp;<%=user.address%></p>
+                        <br>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="address" placeholder="Địa chỉ">
+                        <h5> Số điện thoại:* </h5> 
+                        <p> &emsp;&emsp;&emsp;<%=user.phone%></p>
+                        <br>
                     </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="city" placeholder="Thành phố">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="country" placeholder="Quốc gia">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="text" name="zip-code" placeholder="Mã ZIP">
-                    </div>
-                    <div class="form-group">
-                        <input class="input" type="tel" name="tel" placeholder="Điện thoại">
-                    </div>
-                    <div class="form-group">
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="create-account">
-                            <label for="create-account">
-                                <span></span>
-                                Tạo tài khoản?
-                            </label>
-                            <div class="caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt.</p>
-                                <input class="input" type="password" name="password" placeholder="Nhập mật khẩu">
-                            </div>
-                        </div>
+                    <div class="order-notes">
+                        <textarea class="input" placeholder="Ghi chú thêm"></textarea>
                     </div>
                 </div>
                 <!-- /Billing Details -->
 
-                <!-- Shiping Details -->
-                <div class="shiping-details">
-                    <div class="section-title">
-                        <h3 class="title">Địa chỉ giao hàng</h3>
-                    </div>
-                    <div class="input-checkbox">
-                        <input type="checkbox" id="shiping-address">
-                        <label for="shiping-address">
-                            <span></span>
-                            Giao đến địa chỉ khác?
-                        </label>
-                        <div class="caption">
-                            <div class="form-group">
-                                <input class="input" type="text" name="first-name" placeholder="Tên">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="last-name" placeholder="Họ">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="address" placeholder="Địa chỉ">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="city" placeholder="Thành phố">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="country" placeholder="Quốc gia">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="zip-code" placeholder="Mã ZIP">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Điện thoại">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Shiping Details -->
-
                 <!-- Order notes -->
-                <div class="order-notes">
-                    <textarea class="input" placeholder="Ghi chú"></textarea>
-                </div>
+                
                 <!-- /Order notes -->
             </div>
 
@@ -148,39 +90,28 @@
                         <div><strong class="order-total">$2940.00</strong></div>
                     </div>
                 </div>
+                <h>Các hình thức thanh toán</h>
                 <div class="payment-method">
                     <div class="input-radio">
                         <input type="radio" name="payment" id="payment-1">
                         <label for="payment-1">
                             <span></span>
-                            Chuyển khoản ngân hàng
+                            Thẻ ATM nội địa/Internet Banking (Miễn phí thanh toán)
                         </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
                     </div>
                     <div class="input-radio">
                         <input type="radio" name="payment" id="payment-2">
                         <label for="payment-2">
                             <span></span>
-                            Thanh toán qua séc
+                            Thanh toán tiền mặt khi nhận hàng
                         </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
                     </div>
                     <div class="input-radio">
                         <input type="radio" name="payment" id="payment-3">
                         <label for="payment-3">
                             <span></span>
-                            Hệ thống Paypal
+                            Thanh toán bằng ví MoMo
                         </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
                     </div>
                 </div>
                 <div class="input-checkbox">

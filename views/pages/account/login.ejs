@@ -2,7 +2,8 @@
 <div class="container">
     <div class="login" >
         <h1>Đăng nhập</h1>
-        <% include ../../partials/messages %>
+        <div class="mes-err-login"><% include ../../partials/messages %></div>
+        
         <form action="/users/login" method="POST">
             <div class="form-group">
                 <label for="email">Email</label>

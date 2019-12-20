@@ -203,6 +203,8 @@ exports.addToCart = (req, res) => {
 		.then(product => {
 			// Add to items array
 			items.push({
+				id: productID,
+				productImage: product.imgSrc,
 				productName: product.name,
 				price: product.price,
 				quantity: quantity
