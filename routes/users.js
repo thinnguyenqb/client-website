@@ -21,6 +21,15 @@ router.get('/logout', accountControllers.logoutHandle);
 // Profile
 router.get('/profile', ensureAuthenticated, accountControllers.profile);
 
+// Update Profile
+router.post('/update-profile', accountControllers.updateProfile);
+
+// Change Password Page
+router.get('/change-password', ensureAuthenticated, accountControllers.changePasswordPage);
+
+// Change Password Page
+router.post('/change-password', accountControllers.changePasswordHandle);
+
 // Forget Password
 router.get('/forget-password', accountControllers.forgetPassword);
 

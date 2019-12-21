@@ -74,6 +74,72 @@ exports.profile = (req, res) => {
     res.render('pages/account/profile', { user: req.user });
 }
 
+// Update Profile
+exports.updateProfile = (req, res) => {
+    let errors = [];
+    const newName = req.body.name;
+    const newPhone = req.body.phone;
+    const newAddress = req.body.address;
+
+    User.findOne({ _id: req.user._id }) // Find user by ID
+        .then(user => {
+            if (newName != '') {
+                user.name = newName;
+            }
+            if (newPhone != '') {
+                user.phone = newPhone;
+            }
+            if (newAddress != '') {
+                user.address = newAddress;
+            }
+            user.save()
+                .then(user => {
+                    req.flash('success_msg', 'Bạn đã cập nhật thành công');
+                    res.redirect('/users/profile');
+                })
+                .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+}
+
+// Change Password Page
+exports.changePasswordPage = (req, res) => {
+    res.render('pages/account/change-password', { user: req.user });
+}
+
+// Change Password Handle
+exports.changePasswordHandle = (req, res) => {
+    const oldPassword = req.body.oldPassword;
+    const newPassword = req.body.newPassword;
+
+    User.findOne({ _id: req.user._id }) // Find user by ID
+        .then(user => {
+            // Recheck old password
+            bcrypt.compare(oldPassword, user.password, (err, isMatch) => {
+                if (err) throw err;
+
+                if (isMatch) { // Match
+                    // Hash new password
+                    bcrypt.genSalt(10, (err, salt) =>
+                        bcrypt.hash(newPassword, salt, (err, hash) => {
+                            user.password = hash;
+                            // Save new password
+                            user.save()
+                                .then(user => {
+                                    req.flash('success_msg', 'Bạn đã đổi mật khẩu thành công');
+                                    res.redirect('/users/change-password');
+                                })
+                                .catch(err => console.log(err));
+                        }));
+                } else { // Not match
+                    req.flash('error_msg', 'Mật khẩu cũ không đúng');
+                    res.redirect('/users/change-password');
+                }
+            });
+        })
+        .catch(err => console.log(err));
+}
+
 // Forget Password
 exports.forgetPassword = (req, res) => {
     res.render('pages/account/forget-password');
@@ -84,7 +150,7 @@ exports.checkOut = (req, res) => {
     res.render('pages/order/checkout', { user: req.user });
 }
 
-// OrderManagement
+// Order Management
 exports.orderManagement = (req, res) => {
     res.render('pages/order/order-management', { user: req.user });
 }
