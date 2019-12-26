@@ -3,27 +3,10 @@
         <div class="home">
             <div class="home_container ">
                 <div class="home_content text-center">
-                    <div class="home_title">Thông tin tài khoản</div>
+                    <div class="home_title">Giỏ hàng</div>
                 </div>
             </div>
         </div>
-        <% if (!items || items.length == 0) {%>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th id="col-cart-1" scope="col">Sản phẩm</th>
-                    <th id="col-cart-2" scope="col">Đơn giá</th>
-                    <th id="col-cart-2" scope="col">Số lượng</th>
-                    <th id="col-cart-2" scope="col">Tổng cộng</th>
-                    <th id="del-product" scope="col"></th>
-                </tr>
-            </thead>
-        </table>
-        <p>Không có sản phẩm</p>
-        <div class="buy-checkout">
-            <a href="/store"><button type="button" class="btn btn-outline-danger">Tiếp tục mua hàng</button></a>
-        </div>
-        <%} else { %>
         <table class="table">
             <thead>
                 <tr>
@@ -34,38 +17,8 @@
                     <th id="del-product" scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
-                <% items.forEach(entry => { %>
-                <tr>
-                    <td class="img-info-prod">
-                        <div><a href="/product/<%= entry.id %>"><img src="<%= entry.productImage %>" alt=""></a>
-                            <a href="/product/<%= entry.id %>">
-                                <p><%= entry.productName %></p>
-                            </a>
+            <tbody id="cart">
 
-                        </div>
-                    </td>
-                    <td id="col-cart-3">
-                        <p><%= priceConverter(entry.price) %> đ</p>
-                    </td>
-                    <td id="col-cart-3">
-                        <div class="qty-label d-flex justify-content-around quantity-prod"></div>
-                        <div class="input-number">
-                            <span class="qty-down">-</span>
-                            <input type="number" value="<%= entry.quantity %>" min="1" name="quantity">
-                            <span class="qty-up">+</span>
-                        </div>
-                    </td>
-                    <td id="col-cart-3">
-                        <p><%= priceConverter(entry.quantity * entry.price) %> đ</p>
-                    </td>
-                    <td id="col-cart-4">
-                        <form action="/delete/<%= i - 1 %>" method="POST">
-                            <button type="submit" class="btn btn-danger">Xóa</button>
-                        </form>
-                    </td>
-                </tr>
-                <% i++; }) %>
             </tbody>
         </table>
         <div class="buy-checkout">
@@ -103,7 +56,8 @@
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="standart-shipping" name="shipping"
                                             class="custom-control-input">
-                                        <label class="custom-control-label" for="standart-shipping">Standart:(3 - 4 ngày)</label>
+                                        <label class="custom-control-label" for="standart-shipping">Standart:(3 - 4
+                                            ngày)</label>
                                     </div><!-- End .custom-control -->
                                 </td>
                                 <td>16.000đ</td>
@@ -113,7 +67,8 @@
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="express-shipping" name="shipping"
                                             class="custom-control-input">
-                                        <label class="custom-control-label" for="express-shipping">Express:(1 ngày)</label>
+                                        <label class="custom-control-label" for="express-shipping">Express:(1
+                                            ngày)</label>
                                     </div><!-- End .custom-control -->
                                 </td>
                                 <td>20.000đ</td>
@@ -125,13 +80,71 @@
                         </tbody>
                     </table>
                     <div class="buy-checkout-2">
-                        <a href="/users/checkout"><button type="button" class="btn btn-danger continue-checkout">Thanh toán ngay</button></a>
-                        <a href="/store"><button type="button" class="btn btn-danger continue-shopping">Tiếp tục mua hàng</button></a>
+                        <a href="/users/checkout"><button type="button" class="btn btn-danger continue-checkout">Thanh
+                                toán ngay</button></a>
+                        <a href="/store"><button type="button" class="btn btn-danger continue-shopping">Tiếp tục mua
+                                hàng</button></a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4"></div>
         </div>
-        <% } %>
     </div>
 </div>
+
+<script>
+    function priceConverter(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    if (typeof (Storage) !== "undefined") {
+        // Get items
+        var items = JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+        // Get table
+        var table = document.getElementById("cart");
+
+        // Add each row to table
+        var i;
+        for (i = 0; i < 5; i++) {
+            var row = table.insertRow(i);
+            // Add each cell to row
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+
+            // Assign each cell as html string
+            cell1.innerHTML =
+            '<div><a href="/product/' + items[i].id + '"><img src="' + items[i].imgSrc + '" alt=""></a>' +
+                '<a href="/product/' + items[i].id + '"><p>' + items[i].name + '</p></a>' +
+            '</div>';
+            cell1.className = 'img-info-prod';
+
+            cell2.innerHTML =
+            '<p>' + priceConverter(items[i].price) + ' đ</p>';
+            cell2.id = 'col-cart-3';
+
+            cell3.innerHTML =
+            '<div class="qty-label d-flex justify-content-around quantity-prod"></div>' +
+            '<div class="input-number">' +
+                '<span class="qty-down">-</span>' +
+                '<input type="number" value="' + items[i].quantity + '" min="1" name="quantity">' +
+                '<span class="qty-up">+</span>' +
+            '</div>';
+            cell3.id = 'col-cart-3';
+
+            cell4.innerHTML =
+            '<p>' + priceConverter(items[i].price * items[i].quantity) + ' đ</p>';
+            cell4.id = 'col-cart-3';
+
+            cell5.innerHTML =
+            '<button type="submit" class="btn btn-danger">Xóa</button>';
+            cell5.id = 'col-cart-4';
+        }
+
+    } else {
+        // Sorry! No Web Storage support..
+    }
+</script>

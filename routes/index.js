@@ -22,12 +22,12 @@ router.get('/search', productControllers.search);
 router.post('/product/comment/:id', productControllers.comment);
 
 // Add to cart
-router.post('/product/add-to-cart/:id', productControllers.addToCart);
+// router.post('/product/add-to-cart/:id', productControllers.addToCart);
 
 // Cart
 router.get('/cart', productControllers.cart);
 
 // Delete item from cart
-router.post('/delete/:index', productControllers.delete);
+// router.post('/delete/:index', productControllers.delete);
 
 module.exports = router;

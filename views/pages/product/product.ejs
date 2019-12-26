@@ -88,17 +88,24 @@
                     </div>
 
                     <div class="add-to-cart">
-                        <form action="/product/add-to-cart/<%= product._id %>" method="POST">
-                            <div class="qty-label">
-                                Số lượng
-                                <div class="input-number">
-                                    <input type="number" value="1" min="1" name="quantity">
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
-                                </div>
+                        <div class="qty-label">
+                            Số lượng
+                            <div class="input-number">
+                                <input type="number" value="1" min="1" id="quantity">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
                             </div>
-                            <button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
-                        </form>
+                        </div>
+
+                        <!-- These are for localStorage -->
+                        <input id="id" type="text" value="<%= product._id %>" hidden>
+                        <input id="imgSrc" type="text" value="<%= product.imgSrc %>" hidden>
+                        <input id="name" type="text" value="<%= product.name %>" hidden>
+                        <input id="price" type="number" value="<%= product.price %>" hidden>
+                        <button class="add-to-cart-btn" onclick="addToCart()"><i class="fa fa-shopping-cart"></i>
+                            thêm vào giỏ</button>
+                        <!-- These are for localStorage -->
+
                     </div>
 
                     <!-- <ul class="product-btns">
@@ -146,9 +153,6 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <a style="color: black;"><%= product.description %></a>
-                                    <!-- <h3>Trailer</h3>
-                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cVEemOmHw9Y" frameborder="0" 
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                                 </div>
                             </div>
                         </div>
@@ -159,16 +163,6 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>
-                                        <!-- <li>Chính hãng, Nguyên seal, Mới 100%, Chưa active</li>
-                                        <li>Mã part: VN/A</li>
-                                        <li>Thiết kế: Nguyên khối</li>
-                                        <li>Màn hình: OLED (Super Retina XDR), 6.5 inch, 2688 x 1242 pixels</li>
-                                        <li>Camera Trước/Sau: 12MP / 12MP + 12MP + 12MP</li>
-                                        <li>CPU: Apple A13 Bionic (7 nm+)</li>
-                                        <li>Bộ Nhớ: 256 GB</li>
-                                        <li>RAM: 4GB</li>
-                                        <li>SIM: 1 Nano SIM + 1 esim</li>
-                                        <li>Tính năng: Chống nước, chống bụi, Face ID, Sạc pin nhanh</li> -->
                                         <%= product.configuration %>
                                     </p>
                                 </div>
@@ -271,9 +265,9 @@
                                         </ul>
                                         <ul class="reviews-pagination">
                                             <% for (;i <= countPages; i++) { %>
-                                                <li <% if (page == i) { %> class="active" <% } %>>
-                                                    <a <% if (page != i) { %> href="?page=<%= i %>" <% } %> ><%= i %></a>
-                                                </li>
+                                            <li <% if (page == i) { %> class="active" <% } %>>
+                                                <a <% if (page != i) { %> href="?page=<%= i %>" <% } %>><%= i %></a>
+                                            </li>
                                             <% } %>
                                         </ul>
                                     </div>
@@ -283,10 +277,13 @@
                                 <!-- Review Form -->
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form class="review-form" action="/product/comment/<%= product._id %>" method="POST">
+                                        <form class="review-form" action="/product/comment/<%= product._id %>"
+                                            method="POST">
                                             <input class="input" type="text" placeholder="Họ tên" name="name"
-                                            <% if (typeof user != 'undefined') { %> value="<%= user.name %>"<% } %> required>
-                                            <textarea class="input" placeholder="Nhận xét của bạn" name="content" required></textarea>
+                                                <% if (typeof user != 'undefined') { %> value="<%= user.name %>" <% } %>
+                                                required>
+                                            <textarea class="input" placeholder="Nhận xét của bạn" name="content"
+                                                required></textarea>
                                             <div class="input-rating">
                                                 <span>Đánh giá của bạn: </span>
                                                 <div class="stars">
@@ -336,18 +333,61 @@
             </div>
 
             <div class="col-md-12">
-				<div class="row">
-					<div class="products-tabs">
-						<div id="tab1" class="tab-pane active">
-							<div class="products-slick" data-nav="#slick-nav-1">
-								<% include ../../partials/list-products %>
-							</div>
-							<div id="slick-nav-1" class="products-slick-nav"></div>
-						</div>
-					</div>
-				</div>
-			</div>
+                <div class="row">
+                    <div class="products-tabs">
+                        <div id="tab1" class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-1">
+                                <% include ../../partials/list-products %>
+                            </div>
+                            <div id="slick-nav-1" class="products-slick-nav"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <!-- /Section -->
+
+<script>
+    function addToCart() {
+        if (typeof (Storage) !== "undefined") {
+            // Get old items
+            var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+            // Create new item
+            var newItem =
+            {
+                id: document.getElementById("id").value,
+                imgSrc: document.getElementById("imgSrc").value,
+                name: document.getElementById("name").value,
+                price: parseInt(document.getElementById("price").value),
+                quantity: parseInt(document.getElementById("quantity").value)
+            };
+
+            var exist = false;
+            // If exist, add quantity
+            var i;
+            for (i = 0; i < oldItems.length; i++) {
+                if (oldItems[i].id == newItem.id) {
+                    exist = true;
+                    oldItems[i].quantity += newItem.quantity;
+                    break;
+                }
+            }
+
+            // If not, add newItem
+            if (exist == false) {
+                oldItems.push(newItem);
+            }
+
+            // Save
+            localStorage.setItem('itemsArray', JSON.stringify(oldItems));
+
+            // Alert
+            alert("Sản phẩm đã được thêm vào giỏ hàng");
+        } else {
+            // Sorry! No Web Storage support..
+        }
+    }
+</script>
