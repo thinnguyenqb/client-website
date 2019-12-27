@@ -89,6 +89,7 @@
                                 <a class="dropdown-toggle" href="/cart">
                                     <i class="fa fa-shopping-cart fa-lg"></i>
                                     <p>Giỏ hàng</p>
+                                    <div id="cart-quantity" class="qty">3</div>
                                 </a>
                             </div>
                             <!-- End Cart -->
@@ -178,3 +179,17 @@
         <!-- /container -->
     </nav>
     <!-- /NAVIGATION -->
+
+<script>
+    // Get items
+    var items = JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+    // Get cart quantity element
+    var cartQuantityIcon = document.getElementById('cart-quantity');
+
+    if (items.length > 0) {
+        cartQuantityIcon.innerHTML = items.length;
+    } else {
+        cartQuantityIcon.style.visibility = 'hidden';
+    }
+</script>

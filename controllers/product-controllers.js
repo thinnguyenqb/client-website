@@ -193,44 +193,10 @@ exports.comment = (req, res) => {
 		});
 }
 
-// Add to cart
-exports.addToCart = (req, res) => {
-	const productID = req.params.id;
-	const quantity = req.body.quantity;
-
-	// Find product
-	Product.findOne({ _id: productID })
-		.then(product => {
-			// Add to items array
-			items.push({
-				id: productID,
-				productImage: product.imgSrc,
-				productName: product.name,
-				price: product.price,
-				quantity: quantity
-			});
-			res.redirect('/cart');
-		})
-		.catch(err => {
-			console.log('Error: ', err);
-			throw err;
-		});
-}
-
 // Cart
 exports.cart = (req, res) => {
 	res.render('pages/order/cart', {
 		user: req.user,
-		items: items,
-		i: 1,
 		priceConverter: functions.numberWithCommas
 	});
-}
-
-// Delete item from cart
-exports.delete = (req, res) => {
-	const index = req.params.index;
-
-	items.splice(index, 1);
-	res.redirect('/cart');
 }
