@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
                     <li><a href="/">Trang chủ</a></li>
-                    <li><a href="/users/checkout">Thanh toán</a></li>
+                    <li>Thanh toán</li>
                 </ul>
             </div>
         </div>
@@ -30,29 +30,31 @@
                     <div class="section-title">
                         <h3 class="title">Thông tin nhận hàng</h3>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group input-row">
                         <h5> Họ tên:* </h5> 
-                        <p> &emsp;&emsp;&emsp;<%=user.name%></p>
+                        <input class="typing-input" type="text" name="name" value="<%=user.name%>" required>
                         <br>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group input-row">
                         <h5> Email:* </h5> 
-                        <p> &emsp;&emsp;&emsp;<%=user.email%></p>
+                        <input class="typing-input" type="text" name="email" value="<%=user.email%>" required>
                         <br>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group input-row">
                         <h5> Địa chỉ:* </h5> 
-                        <p> &emsp;&emsp;&emsp;<%=user.address%></p>
+                        <input class="typing-input" type="text" name="address" value="<%=user.address%>" required>
                         <br>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group input-row">
                         <h5> Số điện thoại:* </h5> 
-                        <p> &emsp;&emsp;&emsp;<%=user.phone%></p>
+                        <input class="typing-input" type="text" name="phone" value="<%=user.phone%>" required>
                         <br>
                     </div>
                     <div class="order-notes">
-                        <textarea class="input" placeholder="Ghi chú thêm"></textarea>
+                        <h5> Ghi chú thêm: </h5> 
+                        <textarea class="input"></textarea>
                     </div>
+                    <i>*: Bắt buộc</i>
                 </div>
                 <!-- /Billing Details -->
 
@@ -71,23 +73,23 @@
                         <div><strong>SẢN PHẨM</strong></div>
                         <div><strong>TỔNG CỘNG</strong></div>
                     </div>
-                    <div class="order-products">
-                        <div class="order-col">
+                    <div class="order-products" id="order-products">
+                        <!-- <div class="order-col">
                             <div>1x Assassin's Creed: Origins</div>
                             <div>$980.00</div>
                         </div>
                         <div class="order-col">
                             <div>2x Battlefield 1</div>
                             <div>$980.00</div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="order-col">
                         <div>Phí giao hàng</div>
-                        <div><strong>MIỄN PHÍ</strong></div>
+                        <div><strong id="shipping-fee"></strong></div>
                     </div>
                     <div class="order-col">
                         <div><strong>TỔNG CỘNG</strong></div>
-                        <div><strong class="order-total">$2940.00</strong></div>
+                        <div><strong id="total-cost" class="order-total"></strong></div>
                     </div>
                 </div>
                 <h>Các hình thức thanh toán</h>
@@ -121,7 +123,7 @@
                         Tôi đã đọc và chấp nhận <a href="#">điều khoản & điều kiện</a>
                     </label>
                 </div>
-                <a href="#" class="primary-btn order-submit">Đặt hàng</a>
+                <button class="primary-btn order-submit">Đặt hàng</button>
             </div>
             <!-- /Order Details -->
         </div>
@@ -131,3 +133,44 @@
 </div>
 <!-- /SECTION -->
 
+<script>
+    // Get items
+    var items = JSON.parse(localStorage.getItem('itemsArray')) || [];
+    // Get shipping fee
+    var shippingFee = localStorage.getItem('shippingFee') || 0;
+
+    // Get order products
+    var orderProducts = document.getElementById('order-products');
+
+    // Append each product node
+    var totalCost = 0;
+    items.forEach(entry => {
+        var newProduct = document.createElement('div');
+        newProduct.className = 'order-col';
+
+        var newRow = document.createElement('div');
+        newRow.innerHTML = entry.quantity + 'x ' + entry.name;
+        newProduct.appendChild(newRow);
+
+        var newCost = document.createElement('div');
+        newCost.innerHTML = priceConverter(entry.quantity * entry.price) + ' đ';
+        newProduct.appendChild(newCost);
+
+        orderProducts.appendChild(newProduct);
+
+        totalCost += entry.quantity * entry.price;
+    });
+
+    // Set shipping fee element
+    document.getElementById('shipping-fee').innerHTML =
+        (shippingFee == 0)?'MIỄN PHÍ':(priceConverter(shippingFee) + ' đ');
+
+    // Set total-cost element
+    document.getElementById('total-cost').innerHTML = priceConverter(totalCost) + ' đ';
+
+    // Convert price from number to string with commas
+    function priceConverter(x) {
+        // Using regular expression
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+</script>

@@ -92,6 +92,8 @@
     // Load items from localStorage and generate table ==========================================================
         // Get items
         var items = JSON.parse(localStorage.getItem('itemsArray')) || [];
+        // Get shipping fee
+        var shippingFee = localStorage.getItem('shippingFee') || 0;
 
         // If items is not empty, show delete all button, enable checkout button
         if (items.length > 0) {
@@ -163,17 +165,24 @@
         // Get total cost
         var totalCost = document.getElementById('total-cost');
 
+        // Update total cost and shipping fee
         switch (type) {
             case 0:
                 totalCost.innerHTML = priceConverter(subtotal) + ' đ';
+                shippingFee = 0;
                 break;
             case 1:
                 totalCost.innerHTML = priceConverter(subtotal + 20000) + ' đ';
+                shippingFee = 20000;
                 break;
             case 2:
                 totalCost.innerHTML = priceConverter(subtotal + 40000) + ' đ';
+                shippingFee = 40000;
                 break;
         }
+
+        // Update local storage
+        localStorage.shippingFee = shippingFee;
     }
 
     // Convert price from number to string with commas
@@ -203,13 +212,7 @@
 
         // Recheck shipping method and reset total cost
         var totalCost = document.getElementById('total-cost');
-        if (document.getElementById('free-shipping').checked == true) {
-            totalCost.innerHTML = priceConverter(subtotal) + ' đ';
-        } else if (document.getElementById('standard-shipping').checked == true) {
-            totalCost.innerHTML = priceConverter(subtotal + 20000) + ' đ';
-        } else if (document.getElementById('express-shipping').checked == true) {
-            totalCost.innerHTML = priceConverter(subtotal + 40000) + ' đ';
-        }
+        totalCost.innerHTML = priceConverter(subtotal + shippingFee) + ' đ';
 
         // Don't forget to reset cart quantity icon
         var cartQuantityIcon = document.getElementById('cart-quantity');
@@ -285,13 +288,7 @@
 
         // Recheck shipping method and reset total cost
         var totalCost = document.getElementById('total-cost');
-        if (document.getElementById('free-shipping').checked == true) {
-            totalCost.innerHTML = priceConverter(subtotal) + ' đ';
-        } else if (document.getElementById('standard-shipping').checked == true) {
-            totalCost.innerHTML = priceConverter(subtotal + 20000) + ' đ';
-        } else if (document.getElementById('express-shipping').checked == true) {
-            totalCost.innerHTML = priceConverter(subtotal + 40000) + ' đ';
-        }
+        totalCost.innerHTML = priceConverter(subtotal + shippingFee) + ' đ';
 
         // Save
         localStorage.setItem('itemsArray', JSON.stringify(items));
