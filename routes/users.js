@@ -33,8 +33,11 @@ router.post('/change-password', accountControllers.changePasswordHandle);
 // Forget Password
 router.get('/forget-password', accountControllers.forgetPassword);
 
-// Checkout
-router.get('/checkout', ensureAuthenticated, accountControllers.checkOut);
+// Checkout Page
+router.get('/checkout', ensureAuthenticated, accountControllers.checkoutPage);
+
+// Checkout Handle
+router.post('/checkout', accountControllers.checkoutHandle);
 
 // Order Management
 router.get('/order-management', ensureAuthenticated, accountControllers.orderManagement);

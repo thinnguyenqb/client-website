@@ -1,4 +1,4 @@
-// Model
+// Models
 var Product = require('../models/product');
 var Comment = require('../models/comment');
 
@@ -195,8 +195,5 @@ exports.comment = (req, res) => {
 
 // Cart
 exports.cart = (req, res) => {
-   res.render('pages/order/cart', {
-      user: req.user,
-      priceConverter: functions.numberWithCommas
-   });
+   res.render('pages/order/cart', { user: req.user });
 }
