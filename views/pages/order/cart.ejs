@@ -93,7 +93,20 @@
         // Get items
         var items = JSON.parse(localStorage.getItem('itemsArray')) || [];
         // Get shipping fee
-        var shippingFee = localStorage.getItem('shippingFee') || 0;
+        var shippingFee = parseInt(localStorage.getItem('shippingFee')) || 0;
+        
+        //  Recheck shipping method
+        switch (shippingFee) {
+            case 0:
+                document.getElementById('free-shipping').checked = true;
+                break;
+            case 20000:
+                document.getElementById('standard-shipping').checked = true;
+                break;
+            case 40000:
+                document.getElementById('express-shipping').checked = true;
+                break;
+        }
 
         // If items is not empty, show delete all button, enable checkout button
         if (items.length > 0) {
@@ -155,8 +168,9 @@
             subtotal += items[i].price * items[i].quantity;
         }
 
+        // Set subtotal and total cost
         document.getElementById('subtotal').innerHTML = priceConverter(subtotal) + ' đ';
-        document.getElementById('total-cost').innerHTML = priceConverter(subtotal) + ' đ';
+        document.getElementById('total-cost').innerHTML = priceConverter(subtotal + shippingFee) + ' đ';
 
     // Functions ================================================================================================
     // Select shipping method and update total cost
@@ -244,7 +258,7 @@
         // Reset subtotal and total cost
         subtotal = 0;
         document.getElementById('subtotal').innerHTML = priceConverter(subtotal) + ' đ';
-        document.getElementById('total-cost').innerHTML = priceConverter(subtotal) + ' đ';
+        document.getElementById('total-cost').innerHTML = priceConverter(subtotal + shippingFee) + ' đ';
 
         // Hide cart quantity icon and delete all button, disable checkout button
         cartQuantityIcon.style.visibility = 'hidden';
@@ -255,7 +269,7 @@
         localStorage.setItem('itemsArray', JSON.stringify([]));
 
         // Alert
-        //alert("Tất cả sản phẩm đã bị xóa khỏi giỏ hàng");
+        alert("Tất cả sản phẩm đã bị xóa khỏi giỏ hàng");
     }
 
     // Change item quantity

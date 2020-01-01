@@ -31,27 +31,27 @@
                         <h3 class="title">Thông tin nhận hàng</h3>
                     </div>
                     <div class="form-group input-row">
-                        <h5> Họ tên:* </h5> 
+                        <h5> Họ tên:* </h5>
                         <input class="typing-input" type="text" name="name" value="<%=user.name%>" required>
                         <br>
                     </div>
                     <div class="form-group input-row">
-                        <h5> Email:* </h5> 
+                        <h5> Email:* </h5>
                         <input class="typing-input" type="text" name="email" value="<%=user.email%>" required>
                         <br>
                     </div>
                     <div class="form-group input-row">
-                        <h5> Địa chỉ:* </h5> 
+                        <h5> Địa chỉ:* </h5>
                         <input class="typing-input" type="text" name="address" value="<%=user.address%>" required>
                         <br>
                     </div>
                     <div class="form-group input-row">
-                        <h5> Số điện thoại:* </h5> 
+                        <h5> Số điện thoại:* </h5>
                         <input class="typing-input" type="text" name="phone" value="<%=user.phone%>" required>
                         <br>
                     </div>
                     <div class="order-notes">
-                        <h5> Ghi chú thêm: </h5> 
+                        <h5> Ghi chú thêm: </h5>
                         <textarea class="input"></textarea>
                     </div>
                     <i>*: Bắt buộc</i>
@@ -59,7 +59,7 @@
                 <!-- /Billing Details -->
 
                 <!-- Order notes -->
-                
+
                 <!-- /Order notes -->
             </div>
 
@@ -74,14 +74,6 @@
                         <div><strong>TỔNG CỘNG</strong></div>
                     </div>
                     <div class="order-products" id="order-products">
-                        <!-- <div class="order-col">
-                            <div>1x Assassin's Creed: Origins</div>
-                            <div>$980.00</div>
-                        </div>
-                        <div class="order-col">
-                            <div>2x Battlefield 1</div>
-                            <div>$980.00</div>
-                        </div> -->
                     </div>
                     <div class="order-col">
                         <div>Phí giao hàng</div>
@@ -92,38 +84,40 @@
                         <div><strong id="total-cost" class="order-total"></strong></div>
                     </div>
                 </div>
-                <h>Các hình thức thanh toán</h>
-                <div class="payment-method">
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-1">
-                        <label for="payment-1">
+                <form>
+                    <h>Các hình thức thanh toán</h>
+                    <div class="payment-method">
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-1" checked>
+                            <label for="payment-1">
+                                <span></span>
+                                Thẻ ATM nội địa/Internet Banking (Miễn phí thanh toán)
+                            </label>
+                        </div>
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-2">
+                            <label for="payment-2">
+                                <span></span>
+                                Thanh toán tiền mặt khi nhận hàng
+                            </label>
+                        </div>
+                        <div class="input-radio">
+                            <input type="radio" name="payment" id="payment-3">
+                            <label for="payment-3">
+                                <span></span>
+                                Thanh toán bằng ví MoMo
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-checkbox">
+                        <input type="checkbox" id="terms" onclick="checkoutButton()" checked>
+                        <label for="terms">
                             <span></span>
-                            Thẻ ATM nội địa/Internet Banking (Miễn phí thanh toán)
+                            Tôi đã đọc và chấp nhận <a href="#">điều khoản & điều kiện</a>
                         </label>
                     </div>
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-2">
-                        <label for="payment-2">
-                            <span></span>
-                            Thanh toán tiền mặt khi nhận hàng
-                        </label>
-                    </div>
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-3">
-                        <label for="payment-3">
-                            <span></span>
-                            Thanh toán bằng ví MoMo
-                        </label>
-                    </div>
-                </div>
-                <div class="input-checkbox">
-                    <input type="checkbox" id="terms">
-                    <label for="terms">
-                        <span></span>
-                        Tôi đã đọc và chấp nhận <a href="#">điều khoản & điều kiện</a>
-                    </label>
-                </div>
-                <button class="primary-btn order-submit">Đặt hàng</button>
+                    <button id="checkout-button" class="primary-btn order-submit" type="submit">Đặt hàng</button>
+                </form>
             </div>
             <!-- /Order Details -->
         </div>
@@ -137,7 +131,7 @@
     // Get items
     var items = JSON.parse(localStorage.getItem('itemsArray')) || [];
     // Get shipping fee
-    var shippingFee = localStorage.getItem('shippingFee') || 0;
+    var shippingFee = parseInt(localStorage.getItem('shippingFee')) || 0;
 
     // Get order products
     var orderProducts = document.getElementById('order-products');
@@ -163,14 +157,24 @@
 
     // Set shipping fee element
     document.getElementById('shipping-fee').innerHTML =
-        (shippingFee == 0)?'MIỄN PHÍ':(priceConverter(shippingFee) + ' đ');
+        (shippingFee == 0) ? 'MIỄN PHÍ' : (priceConverter(shippingFee) + ' đ');
 
     // Set total-cost element
-    document.getElementById('total-cost').innerHTML = priceConverter(totalCost) + ' đ';
+    document.getElementById('total-cost').innerHTML = priceConverter(totalCost + shippingFee) + ' đ';
 
     // Convert price from number to string with commas
     function priceConverter(x) {
         // Using regular expression
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    // Show or hide checkout button
+    function checkoutButton() {
+        var checkoutButton = document.getElementById('checkout-button');
+        if (checkoutButton.style.visibility == 'hidden') {
+            checkoutButton.style.visibility = 'visible';
+        } else {
+            checkoutButton.style.visibility = 'hidden';
+        }
     }
 </script>
