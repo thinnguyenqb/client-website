@@ -1,51 +1,60 @@
+<div class="container">
+  <div class="cart_container">
+      <div class="home">
+          <div class="home_container ">
+              <div class="home_content text-center">
+                  <div class="home_title">Quản lý đơn hàng</div>
+              </div>
+          </div>
+      </div>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th id="col-order-2" scope="col">Mã đơn hàng</th>
+                  <th id="col-order-2" scope="col">Ngày mua</th>
+                  <th id="col-order-1" scope="col">Sản phẩm</th>
+                  <th id="col-order-2" scope="col">Tổng tiền</th>
+                  <th id="col-order-2" scope="col">Trạng thái đơn hàng</th>
+                  <th id="col-order-2" scope="col"></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td class="">
+                    <div><a href="#">
+                        <a href="#">
+                            <p>HADJJAS4242423</p>
+                        </a>
+                    </div>
+                </td>
+                <td id="">
+                    <p>12/12/2019</p>
+                </td>
+                <td id="">
+                    <p>iPhone 11</p>
+                    <p>iPhone 12</p>
+                </td>
+                
+                <td id="">
+                    <p>1223121</p>
+                </td>
+                
+                <td id="">
+                  <p>Đã giao hàng</p>
+              </td>
+                <td id="">
+                    <!-- <form action="#" method="POST"> -->
+                      <a href="/users/track-order">
+                        <button type="submit" class="btn btn-danger">Chi tiết đơn hàng</button>
+                      </a>
+                    <!-- </form> -->
+                </td>
 
-<div class="containe">
-    <div class="home">
-        <div class="home_container ">
-            <div class="home_content text-center">
-                <div class="home_title">Thông tin tài khoản</div>
-            </div>
-        </div>
-    </div>
-    <div id="content" class="row">
-        <div class="col-lg-6 content-box-container">
-            <!-- <form method="POST" action="/edit-profile/<%=user.id%>" id="edit-profile-form"> -->
-                <div id="content-box">
-                    <div class="input-row">
-                        <p class="input-title">Họ và tên</p>
-                        <input class="typing-input" type="text" name="name" placeholder="<%=user.name%>" id="edit-name-input">
-                    </div>
-                    <div class="input-row">
-                        <p class="input-title">Số điện thoại</p>
-                        <input class="typing-input" type="text" name="phone" placeholder="<%=user.phone%>" id="edit-phone-input">
-                    </div>
-                    <div class="input-row">
-                        <p class="input-title">Địa chỉ</p>
-                        <input class="typing-input" type="text" name="address" placeholder="<%=user.address%>" id="edit-address-input">
-                    </div>
-                    <div class="input-row">
-                        <p class="input-title">Email</p>
-                        <input class="typing-input" type="text" placeholder="<%=user.email%>" disabled>
-                    </div>
-                    <div class="input-row">
-                        <p class="input-title">Mật khẩu cũ</p>
-                        <input class="typing-input" name="oldpass" type="password" id="edit-old-pass-input">
-                    </div>
-                    <div class="input-row">
-                        <p class="input-title">Mật khẩu mới</p>
-                        <input class="typing-input" name="newpass" type="password" id="new-pass">
-                    </div>
-                    <div class="input-row">
-                        <p class="input-title">Xác nhận mật khẩu mới</p>
-                        <input class="typing-input" type="password"  id="confirm-password-edit">
-                    </div>               
-                    <div class="input-row" style="font-size: 14px;color:#EC501F;padding-left: 9px;" id="edit-profile-alert"></div>
-                    <div id="input-row-last">
-                        <button type="submit" class="btn btn-danger button" id="edit-profile-submit-btn" data-id="<%=user._id%>" data-email="">CẬP NHẬT</button>
-
-                    </div>
-                </div>
-            <!-- </form> -->
-        </div>
-    </div>
+            </tr>
+          </tbody>
+      </table>
+      <div class="buy-checkout">
+          <a href="/cart"><button type="button" class="btn btn-outline-danger">Quay lại giỏ hàng</button></a>
+      </div>
+  </div>
 </div>

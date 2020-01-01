@@ -2587,3 +2587,151 @@ textarea.input {
   display: none;
 }
 
+/*============ORDER===============*/
+#col-order-1{
+  width: 390px;
+  font-size: medium;
+}
+
+#col-cart-2{
+  width: 150px;
+  text-align: center;
+  font-size: medium;
+}
+
+
+#col-cart-3{
+  text-align: center;
+}
+
+#col-cart-3 p{ 
+  padding-top: 35px;
+}
+
+#col-cart-4{
+  padding-top: 35px;
+}
+
+#col-cart-5 p{ 
+  padding-top: 35px;
+}
+
+/*======================================*/
+#track-order-container {
+  width: 860px;
+  background-color: #FFFFFF;
+  box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#track-order-container p {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+#progress-bar {
+  margin-bottom: 30px;
+}
+
+#orderID-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #218c74;
+}
+
+#stage0::before {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.progressbar {
+  padding: 0px;
+}
+
+#stage1::after {
+  left: -90%;
+  width: 135%;
+}
+
+#stage4::before {
+  margin: 0px 0px 10px auto;
+}
+
+#stage4::after {
+  left: -46%;
+  width: 135%;
+}
+
+.stage-active {
+  font-weight: 700 !important;
+  color: #313F40 !important;
+}
+
+.stage-active::before {
+  border: 5px solid;
+}
+
+.package-element-img {
+  width: 72px;
+  height: auto;
+  margin-right: 30px;
+}
+
+.package-element {
+  margin-bottom: 20px;
+}
+
+.package-element div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 14px;
+}
+
+.package-element span {
+  font-size: 14px;
+  font-weight: 500;
+}
+.super_container_inner
+{
+-webkit-transition: all 400ms ease;
+-moz-transition: all 400ms ease;
+-ms-transition: all 400ms ease;
+-o-transition: all 400ms ease;
+transition: all 400ms ease;
+}
+.super_container_inner.active
+{
+-webkit-transform: translateX(350px);
+-moz-transform: translateX(350px);
+-ms-transform: translateX(350px);
+-o-transform: translateX(350px);
+transform: translateX(350px);
+}
+.super_overlay
+{
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100%;
+background: rgba(0,0,0,0.75);
+z-index: 101;
+visibility: hidden;
+opacity: 0;
+-webkit-transition: all 400ms ease;
+-moz-transition: all 400ms ease;
+-ms-transition: all 400ms ease;
+-o-transition: all 400ms ease;
+transition: all 400ms ease;
+}
+.super_container_inner.active .super_overlay
+{
+visibility: visible;
+opacity: 1;
+}

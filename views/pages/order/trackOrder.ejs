@@ -1,0 +1,72 @@
+<link rel="stylesheet" type="text/css" href="/trackOrder/css/styles.css">
+<link rel="stylesheet" type="text/css" href="/trackOrder/css/responsive.css">
+
+
+<div class="super_container_inner">
+    <div class="super_overlay"></div>
+
+    <div id="content" class="row">
+        <div class="col-md-6 col-lg-4 account-box-container">
+            
+        </div>
+        <div class="col-md-6 col-lg-8 content-box-container">
+            <div id="track-order-container">
+                <p>Theo dõi đơn hàng &nbsp;&nbsp;<span id="orderID-title">JSDAKJDHK8347</span></p>
+                <p>Trạng thái đơn hàng</p>
+                <div id="progress-bar" data-id="cart.status">
+                    <div class="root-container">
+                        <ul class="progressbar">
+                            <li id="stage0">Đặt hàng thành công</li>
+                            <li id="stage1">Tiếp nhận đơn hàng</li>
+                            <li id="stage2">Đóng gói</li>
+                            <li id="stage3">Giao hàng</li>
+                            <li id="stage4">Giao hàng thành công</li>
+                        </ul>
+                    </div>              
+                </div>
+                <p>Thông tin kiện hàng</p>
+                <div id="package-container">
+                   
+                    <div class="package-element row">
+                        <div class="col-1">1</div>
+                        <div class="col-8">
+                            <img src="" class="package-element-img">
+                            <span>iPhone 11 Max</span>
+                        </div>
+                        <div class="col-3" style="justify-content: flex-end">1 sản phẩm</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    var stage = parseInt($("#progress-bar").data("id"));
+    switch(stage){
+        case 0: {
+            $("#stage0").addClass("stage-active");
+            break;
+        }
+        case 1: {
+            $("#stage1").addClass("stage-active");
+            break;
+        }
+        case 2: {
+            $("#stage2").addClass("stage-active");
+            break;
+        }
+        case 3: {
+            $("#stage3").addClass("stage-active");
+            break;
+        }
+        case 4: {
+            $("#stage4").addClass("stage-active");
+            break;
+        }
+    }
+})
+</script>
+

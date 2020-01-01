@@ -152,5 +152,14 @@ exports.checkOut = (req, res) => {
 
 // Order Management
 exports.orderManagement = (req, res) => {
-    res.render('pages/order/order-management', { user: req.user });
+    res.render('pages/order/order-management', { 
+        user: req.user
+     });
+}
+
+// Track Order
+exports.trackOrder = (req, res) => {
+    res.render('pages/order/trackOrder', { 
+        user: req.user
+     });
 }

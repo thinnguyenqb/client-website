@@ -39,5 +39,6 @@ router.get('/checkout', ensureAuthenticated, accountControllers.checkOut);
 // Order Management
 router.get('/order-management', ensureAuthenticated, accountControllers.orderManagement);
 
-
+// Track Order
+router.get('/track-order', ensureAuthenticated, accountControllers.trackOrder);
 module.exports = router;
