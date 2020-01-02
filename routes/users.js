@@ -31,11 +31,20 @@ router.post('/update-profile', accountControllers.updateProfile);
 // Change Password Page
 router.get('/change-password', ensureAuthenticated, accountControllers.changePasswordPage);
 
-// Change Password Page
+// Change Password Handle
 router.post('/change-password', accountControllers.changePasswordHandle);
 
-// Forget Password
-router.get('/forget-password', accountControllers.forgetPassword);
+// Forget Password Page
+router.get('/forget-password', accountControllers.forgetPasswordPage);
+
+// Forget Password Handle
+router.post('/forget-password', accountControllers.forgetPasswordHandle);
+
+// Reset Password Page
+router.get('/reset-password', accountControllers.resetPasswordPage);
+
+// Reset Password Handle
+router.post('/reset-password', accountControllers.resetPasswordHandle);
 
 // Checkout Page
 router.get('/checkout', ensureAuthenticated, accountControllers.checkoutPage);
