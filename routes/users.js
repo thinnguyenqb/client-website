@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var accountControllers = require('../controllers/account-controllers');
+var orderControllers = require('../controllers/order-controllers')
 const { ensureAuthenticated } = require('../config/auth');
 
 // Login Page
@@ -37,11 +38,11 @@ router.get('/forget-password', accountControllers.forgetPassword);
 router.get('/checkout', ensureAuthenticated, accountControllers.checkoutPage);
 
 // Checkout Handle
-router.post('/checkout', accountControllers.checkoutHandle);
+router.post('/checkout', orderControllers.checkoutHandle);
 
 // Order Management
-router.get('/order-management', ensureAuthenticated, accountControllers.orderManagement);
+router.get('/order-management', ensureAuthenticated, orderControllers.orderManagement);
 
 // Track Order
-router.get('/track-order', ensureAuthenticated, accountControllers.trackOrder);
+router.get('/track-order', ensureAuthenticated, orderControllers.trackOrder);
 module.exports = router;
