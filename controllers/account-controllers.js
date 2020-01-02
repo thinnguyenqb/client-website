@@ -1,18 +1,43 @@
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const nodemailer = require('nodemailer');
+
+// Configure nodemailer
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'thanlinh.geass@gmail.com',
+        pass: 'vnu20172021'
+    }
+});
+
+var mailOptions = {
+    from: 'thanlinh.geass@gmail.com'
+};
 
 // Models
 var User = require('../models/user');
-var Order = require('../models/order');
-
-// Login Page
-exports.loginPage = (req, res) => {
-    res.render('pages/account/login');
-}
 
 // Register Page
 exports.registerPage = (req, res) => {
     res.render('pages/account/register');
+}
+
+// Activate Account Page
+exports.activatePage = (req, res) => {
+    // Find user by ID
+    User.findOne({ _id: req.params.id })
+        .then(user => {
+            user.activated = true;
+            user.save();
+            res.render('pages/account/activate');
+        })
+        .catch(err => console.log(err));
+}
+
+// Login Page
+exports.loginPage = (req, res) => {
+    res.render('pages/account/login');
 }
 
 // Register Handle
@@ -35,7 +60,7 @@ exports.registerHandle = (req, res) => {
                 } else {
                     const newUser = new User({ name, email, password });
 
-                    // Hash Password
+                    // Hash password
                     bcrypt.genSalt(10, (err, salt) =>
                         bcrypt.hash(newUser.password, salt, (err, hash) => {
                             if (err) throw err;
@@ -44,7 +69,22 @@ exports.registerHandle = (req, res) => {
                             // Save user
                             newUser.save()
                                 .then(user => {
-                                    req.flash('success_msg', 'Bạn đã đăng ký thành công');
+                                    // Configure mailOptions
+                                    mailOptions.to = email;
+                                    mailOptions.subject = 'Kích hoạt tài khoản';
+                                    mailOptions.text = 'Truy cập đường dẫn sau để kích hoạt tài khoản ' +
+                                        req.protocol + '://' + req.get('host') + '/users/activate/' + user._id;
+
+                                    // Send email
+                                    transporter.sendMail(mailOptions, function (error, info) {
+                                        if (error) {
+                                            console.log(error);
+                                        } else {
+                                            console.log('Email sent: ' + info.response);
+                                        }
+                                    });
+
+                                    req.flash('success_msg', 'Bạn đã đăng ký thành công, vui lòng kiểm tra email và kích hoạt tài khoản');
                                     res.redirect('/users/login');
                                 })
                                 .catch(err => console.log(err));

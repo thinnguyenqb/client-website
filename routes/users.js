@@ -4,11 +4,14 @@ var accountControllers = require('../controllers/account-controllers');
 var orderControllers = require('../controllers/order-controllers')
 const { ensureAuthenticated } = require('../config/auth');
 
-// Login Page
-router.get('/login', accountControllers.loginPage);
-
 // Register Page
 router.get('/register', accountControllers.registerPage);
+
+// Activate Account Page
+router.get('/activate/:id', accountControllers.activatePage);
+
+// Login Page
+router.get('/login', accountControllers.loginPage);
 
 // Register Handle
 router.post('/register', accountControllers.registerHandle);

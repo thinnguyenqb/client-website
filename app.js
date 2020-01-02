@@ -42,6 +42,7 @@ app.use('/producer', express.static(path.join(__dirname, 'public')));
 app.use('/product', express.static(path.join(__dirname, 'public')));
 app.use('/search', express.static(path.join(__dirname, 'public')));
 app.use('/users', express.static(path.join(__dirname, 'public')));
+app.use('/users/activate', express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 

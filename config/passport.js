@@ -15,12 +15,16 @@ module.exports = function(passport) {
                         return done(null, false, { message: 'Email chưa được đăng ký' });
                     }
 
-                    // Match password
+                    // Match password and activated
                     bcrypt.compare(password, user.password, (err, isMatch) => {
                         if (err) throw err;
 
                         if (isMatch) {
-                            return done(null, user);
+                            if (user.activated == false) { // Not activated
+                                return done(null, false, { message: 'Tài khoản chưa được kích hoạt, vui lòng kiểm tra email và kích hoạt tài khoản' });
+                            } else {
+                                return done(null, user);
+                            }
                         } else {
                             return done(null, false, { message: 'Mật khẩu không đúng' });
                         }
