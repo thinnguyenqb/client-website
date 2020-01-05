@@ -1,8 +1,23 @@
 <!-- Phần ô sản phẩm  -->
 <div class="section">
     <div class="container">
-        <div class="title-search"><%=title%></div>
-        <div class="count-product-search">Có&nbsp;<b><%=countProduct%></b>&nbsp;sản phẩm được tìm thấy</div>
+        <div class="title-search">Kết quả tìm kiếm cho <q><%= category + ' ' + name %></q></div>
+        <div class="count-product-search">Có&nbsp;<b><%= countAll %></b>&nbsp;sản phẩm được tìm thấy</div>
+        <div class="store-filter clearfix">
+            <div class="store-sort">
+                <label>
+                    Số sản phẩm mỗi trang:
+                    <select class="input-select" onchange="location = this.value;">
+                        <option value="?name=<%= name %>&category=<%= category %>&count=12&page=1"
+                            <% if (count == 12) { %>selected<% } %>>12</option>
+                        <option value="?name=<%= name %>&category=<%= category %>&count=8&page=1"
+                            <% if (count == 8) { %>selected<% } %>>8</option>
+                        <option value="?name=<%= name %>&category=<%= category %>&count=4&page=1"
+                            <% if (count == 4) { %>selected<% } %>>4</option>
+                    </select>
+                </label>
+            </div>
+        </div>
         <div class="product-show">
             <div class="row">
                 <% products.forEach((entry) => { %>
@@ -28,6 +43,18 @@
                 </div>
                 <% }) %>
             </div>
+        </div>
+        <div class="store-filter clearfix">
+            <span class="store-qty">Đang xem <%= count %>-<%= countAll %> sản phẩm</span>
+            <ul class="store-pagination">
+                <% for (var i = 1; i <= countPages; i++) { %>
+                <li <% if (page == i) { %> class="active" <% } %>>
+                    <a <% if (page != i) { %>
+                        href="?name=<%= name %>&category=<%= category %>&count=<%= count %>&page=<%= i %>"
+                        <% } %>><%= i %></a>
+                </li>
+                <% } %>
+            </ul>
         </div>
     </div>
 </div>

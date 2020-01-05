@@ -62,20 +62,18 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form action="/search">
-                                <select class="input-select">
-                                    <option value="0">Tất cả</option>
-                                    <option value="1">Điện thoại</option>
-                                    <option value="2">Máy tính bảng</option>
-                                    <option value="3">Laptop</option>
-                                    <option value="4">Phụ kiện</option>
+                            <form action="/search" method="POST">
+                                <select class="input-select" name="category">
+                                    <option value="" selected>Tất cả</option>
+                                    <option value="Điện%20thoại" <% if (typeof category != 'undefined' && category == "Điện thoại") { %> selected <% } %>>Điện thoại</option>
+                                    <option value="Máy%20tính%20bảng" <% if (typeof category != 'undefined' && category == "Máy tính bảng") { %> selected <% } %>>Máy tính bảng</option>
+                                    <option value="Laptop" <% if (typeof category != 'undefined' && category == "Laptop") { %> selected <% } %>>Laptop</option>
+                                    <option value="Phụ%20kiện" <% if (typeof category != 'undefined' && category == "Phụ kiện") { %> selected <% } %>>Phụ kiện</option>
                                 </select>
-                                <input class="input"  auto-focus tab-index='1' type='text' auto-complete='search' 
-                                name="name"
-                                id='inputSearch'
-                                placeholder="Nhập từ khóa"
-                                autocomplete="off">
-                                <button class="search-btn">Tìm kiếm</button>
+                                <input class="input" auto-focus tab-index='1' type='text' auto-complete='search'
+                                    name="name" id='inputSearch' placeholder="Nhập từ khóa" autocomplete="on"
+                                    <% if (typeof name != 'undefined') { %>value="<%= name %>" <% } %> required>
+                                <button class="search-btn" type="submit">Tìm kiếm</button>
                             </form>
                         </div>
                     </div>
@@ -179,16 +177,16 @@
     </nav>
     <!-- /NAVIGATION -->
 
-<script>
-    // Get items
-    var items = JSON.parse(localStorage.getItem('itemsArray')) || [];
+    <script>
+        // Get items
+        var items = JSON.parse(localStorage.getItem('itemsArray')) || [];
 
-    // Get cart quantity element
-    var cartQuantityIcon = document.getElementById('cart-quantity');
+        // Get cart quantity element
+        var cartQuantityIcon = document.getElementById('cart-quantity');
 
-    if (items.length > 0) {
-        cartQuantityIcon.innerHTML = items.length;
-    } else {
-        cartQuantityIcon.style.visibility = 'hidden';
-    }
-</script>
+        if (items.length > 0) {
+            cartQuantityIcon.innerHTML = items.length;
+        } else {
+            cartQuantityIcon.style.visibility = 'hidden';
+        }
+    </script>

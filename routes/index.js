@@ -15,8 +15,11 @@ router.post('/store', productControllers.filter);
 // Product Information
 router.get('/product/:id', productControllers.productInfo);
 
-//Search products
-router.get('/search', productControllers.search);
+// Search Result Page
+router.get('/search', productControllers.searchPage);
+
+// Search Handle
+router.post('/search', productControllers.searchHandle);
 
 // Post comment
 router.post('/product/comment/:id', productControllers.comment);
