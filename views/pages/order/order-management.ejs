@@ -3,7 +3,7 @@
         <div class="home">
             <div class="home_container ">
                 <div class="home_content text-center">
-                    <div class="home_title">Quản lý đơn hàng</div>
+                    <div class="home_title">Lịch sử đơn hàng</div>
                 </div>
             </div>
         </div>
@@ -22,10 +22,10 @@
                 <% orders.forEach(entry => { %>
                 <tr>
                     <td class="">
-                        <div><a href="#">
-                                <a href="#">
-                                    <p><%= entry._id %></p>
-                                </a>
+                        <div>
+                            <a href="/users/track-order/<%= entry._id %>">
+                                <p><%= entry._id %></p>
+                            </a>
                         </div>
                     </td>
                     <td id="">
@@ -53,7 +53,7 @@
                         </p>
                     </td>
                     <td id="">
-                        <a href="/users/track-order">
+                        <a href="/users/track-order/<%= entry._id %>">
                             <button type="submit" class="btn btn-danger">Chi tiết đơn hàng</button>
                         </a>
                     </td>

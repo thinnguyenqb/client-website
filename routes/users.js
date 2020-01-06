@@ -56,5 +56,5 @@ router.post('/checkout', orderControllers.checkoutHandle);
 router.get('/order-management', ensureAuthenticated, orderControllers.orderManagement);
 
 // Track Order
-router.get('/track-order', ensureAuthenticated, orderControllers.trackOrder);
+router.get('/track-order/:id', ensureAuthenticated, orderControllers.trackOrder);
 module.exports = router;

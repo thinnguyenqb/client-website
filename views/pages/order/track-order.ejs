@@ -1,72 +1,49 @@
-<link rel="stylesheet" type="text/css" href="/trackOrder/css/styles.css">
-<link rel="stylesheet" type="text/css" href="/trackOrder/css/responsive.css">
-
-
-<div class="super_container_inner">
-    <div class="super_overlay"></div>
-
-    <div id="content" class="row">
-        <div class="col-md-6 col-lg-4 account-box-container">
-            
+<div class="content-box-container">
+    <div id="track-order-container">
+        <h4>Theo dõi đơn hàng: <span style="font-size: medium;font-weight: normal;"><%= order._id %></span></h4>
+        <br>
+        <h4>Trạng thái đơn hàng:</h4>
+        <div class="row" style="margin-bottom: 10px;">
+            <span>Đặt hàng thành công</span>
+            <span style="margin-left: 40px;">Tiếp nhận đơn hàng</span>
+            <span style="margin-left: 100px;">Chuẩn bị giao</span>
+            <span style="margin-left: 130px;">Đang giao</span>
+            <span style="margin-left: 110px;">Đã giao</span>
         </div>
-        <div class="col-md-6 col-lg-8 content-box-container">
-            <div id="track-order-container">
-                <p>Theo dõi đơn hàng &nbsp;&nbsp;<span id="orderID-title">JSDAKJDHK8347</span></p>
-                <p>Trạng thái đơn hàng</p>
-                <div id="progress-bar" data-id="cart.status">
-                    <div class="root-container">
-                        <ul class="progressbar">
-                            <li id="stage0">Đặt hàng thành công</li>
-                            <li id="stage1">Tiếp nhận đơn hàng</li>
-                            <li id="stage2">Đóng gói</li>
-                            <li id="stage3">Giao hàng</li>
-                            <li id="stage4">Giao hàng thành công</li>
-                        </ul>
-                    </div>              
-                </div>
-                <p>Thông tin kiện hàng</p>
-                <div id="package-container">
-                   
-                    <div class="package-element row">
-                        <div class="col-1">1</div>
-                        <div class="col-8">
-                            <img src="" class="package-element-img">
-                            <span>iPhone 11 Max</span>
-                        </div>
-                        <div class="col-3" style="justify-content: flex-end">1 sản phẩm</div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="progress">
+                    <div class="one danger-color"></div>
+                    <div class="two danger-color"></div>
+                    <div class="three <% if (order.status >= 1) {%>danger-color<% } else { %>no-color<% } %>"></div>
+                    <div class="progress-bar progress-bar-danger" <% if (order.status == 0) {%>style="width: 52%;"
+                        <%} else if (order.status == 1) {%>style="width: 77%;" <%} else {%>style="width: 100%;" <% } %>>
                     </div>
-                    
                 </div>
             </div>
         </div>
+        <br>
+        <h4>Thông tin kiện hàng:</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th id="col-cart-1" scope="col">Sản phẩm</th>
+                    <th id="col-cart-2" scope="col">Tổng cộng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="">
+                        <% order.items.forEach(item => { %>
+                        <p><%= item.quantity %>x <%= item.name %></p>
+                        <% }) %>
+                    </td>
+
+                    <td id="">
+                        <p><%= priceConverter(order.totalCost) %> đ</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    var stage = parseInt($("#progress-bar").data("id"));
-    switch(stage){
-        case 0: {
-            $("#stage0").addClass("stage-active");
-            break;
-        }
-        case 1: {
-            $("#stage1").addClass("stage-active");
-            break;
-        }
-        case 2: {
-            $("#stage2").addClass("stage-active");
-            break;
-        }
-        case 3: {
-            $("#stage3").addClass("stage-active");
-            break;
-        }
-        case 4: {
-            $("#stage4").addClass("stage-active");
-            break;
-        }
-    }
-})
-</script>
-

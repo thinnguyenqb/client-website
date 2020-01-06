@@ -48,7 +48,15 @@ exports.orderManagement = (req, res) => {
 
 // Track Order
 exports.trackOrder = (req, res) => {
-    res.render('pages/order/track-order', {
-        user: req.user
-    });
+    const id = req.params.id;
+
+    Order.findOne({ _id: id })
+    .then(order => {
+        res.render('pages/order/track-order', {
+            user: req.user,
+            order: order,
+            priceConverter: functions.numberWithCommas
+        });
+    })
+    .catch(err => console.log(err));
 }

@@ -22,6 +22,8 @@ module.exports = function(passport) {
                         if (isMatch) {
                             if (user.activated == false) { // Not activated
                                 return done(null, false, { message: 'Tài khoản chưa được kích hoạt, vui lòng kiểm tra email và kích hoạt tài khoản' });
+                            } else if (user.locked == true) { // Locked by admin
+                                return done(null, false, { message: 'Tài khoản tạm thời đã bị khóa bởi quản trị viên' });
                             } else {
                                 return done(null, user);
                             }
