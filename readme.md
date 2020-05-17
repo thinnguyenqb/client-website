@@ -2,8 +2,7 @@
 
 **Thông tin thành viên:**
  - 1712787 - Nguyễn Văn Thìn
- - 1712560 - Nguyễn Mạnh Linh
- - 1612375 - Đào Xuân Minh  
+ - 1712560 - Nguyễn Mạnh Linh 
 
 **Một số feature tiêu biểu:**
  - Xác thực bằng Passport, authentication & authorization
