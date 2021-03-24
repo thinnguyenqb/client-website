@@ -1,8 +1,8 @@
 # Web Electro
 
 **Link Demo:**
-ShopUser: https://www.youtube.com/watch?v=IWVJ71kVCIA&t=34s
-ShopAdmin: https://www.youtube.com/watch?v=V4pw5U6-6R0
+- ShopUser: https://www.youtube.com/watch?v=IWVJ71kVCIA&t=34s
+- ShopAdmin: https://www.youtube.com/watch?v=V4pw5U6-6R0
 
 **Thông tin thành viên:**
  - 1712787 - Nguyễn Văn Thìn
