@@ -65,10 +65,11 @@
                             <form action="/search" method="POST">
                                 <select class="input-select" name="category">
                                     <option value="" selected>Tất cả</option>
-                                    <option value="Điện%20thoại" <% if (typeof category != 'undefined' && category == "Điện thoại") { %> selected <% } %>>Điện thoại</option>
-                                    <option value="Máy%20tính%20bảng" <% if (typeof category != 'undefined' && category == "Máy tính bảng") { %> selected <% } %>>Máy tính bảng</option>
+                                    <option value="Điện%20thoại" <% if (typeof category != 'undefined' && category == "Headphone") { %> selected <% } %>>Tai nghe</option>
+                                    <option value="Máy%20tính%20bảng" <% if (typeof category != 'undefined' && category == "Table") { %> selected <% } %>>Table</option>
                                     <option value="Laptop" <% if (typeof category != 'undefined' && category == "Laptop") { %> selected <% } %>>Laptop</option>
-                                    <option value="Phụ%20kiện" <% if (typeof category != 'undefined' && category == "Phụ kiện") { %> selected <% } %>>Phụ kiện</option>
+                                    <option value="Mouse" <% if (typeof category != 'undefined' && category == "Mouse") { %> selected <% } %>>Chuột máy tính</option>
+                                    <option value="Keyboard" <% if (typeof category != 'undefined' && category == "Keyboard") { %> selected <% } %>>Bàn phím</option>
                                 </select>
                                 <input class="input" auto-focus tab-index='1' type='text' auto-complete='search'
                                     name="name" id='inputSearch' placeholder="Nhập từ khóa" autocomplete="on"
@@ -144,10 +145,11 @@
                                 <a>Loại sản phẩm</a>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/store?category=Điện%20thoại">Điện thoại<br></a>
+                                <a class="dropdown-item" href="/store?category=Headphone">Tai nghe<br></a>
                                 <a class="dropdown-item" href="/store?category=Laptop">Laptop<br></a>
-                                <a class="dropdown-item" href="/store?category=Máy%20tính%20bảng">Máy tính bảng<br></a>
-                                <a class="dropdown-item" href="/store?category=Phụ%20kiện">Phụ kiện<br></a>
+                                <a class="dropdown-item" href="/store?category=Table">Table<br></a>
+                                <a class="dropdown-item" href="/store?category=Mouse">Chuột máy tính<br></a>
+                                <a class="dropdown-item" href="/store?category=Keyboard">Bàn phím<br></a>
                             </div>
                         </div>
                     </li>
@@ -161,10 +163,8 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/store?producer=Apple">Apple<br></a>
-                                <a class="dropdown-item" href="/store?producer=Samsung">Samsung<br></a>
-                                <a class="dropdown-item" href="/store?producer=Google">Google<br></a>
-                                <a class="dropdown-item" href="/store?producer=Lenovo">Lenovo<br></a>
-                                <a class="dropdown-item" href="/store?producer=Microsoft">Microsoft<br></a>
+                                <a class="dropdown-item" href="/store?producer=Logitech">Logitech<br></a>
+                                <a class="dropdown-item" href="/store?producer=Asus">Asus<br></a>
                             </div>
                         </div>
                     </li>

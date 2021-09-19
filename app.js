@@ -6,6 +6,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose')
+require('dotenv').config()
 
 var expressLayouts = require('express-ejs-layouts');
 
@@ -17,7 +19,7 @@ var createError = require('http-errors');
 // router files =================================================
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var Database = require('./db/database');
+
 
 // Passport config ==============================================
 require('./config/passport')(passport);
@@ -73,6 +75,17 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//Connect DB    
+const URI = process.env.MONGODB_URL
+
+mongoose.connect(URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+}, err => {
+    if(err) throw err;
+    console.log('Connected to mongodb')
+})
+
 //catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
@@ -90,3 +103,5 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+//mongodb+srv://admin:admin@product-hkdj8.mongodb.net/test?retryWrites=true&w=majority
