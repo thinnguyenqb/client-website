@@ -103,5 +103,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-
-//mongodb+srv://admin:admin@product-hkdj8.mongodb.net/test?retryWrites=true&w=majority
