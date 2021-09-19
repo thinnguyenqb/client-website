@@ -21,7 +21,9 @@
 ---
 **Link Demo:**
 - ShopUser: https://www.youtube.com/watch?v=IWVJ71kVCIA&t=34s
-- ShopAdmin: https://www.youtube.com/watch?v=V4pw5U6-6R0
+![img](https://res.cloudinary.com/ericnguyen-cop/image/upload/v1632060388/client-website/qsvfdw2rfbgzvvrm5esp.png)
 
+- ShopAdmin: https://www.youtube.com/watch?v=V4pw5U6-6R0
+![img](https://res.cloudinary.com/ericnguyen-cop/image/upload/v1632060606/client-website/fbxjgb3mfnw2l3g0tx5h.png)
 
 
